@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок биологии: Виды корней</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Roboto, sans-serif; background: #f0f7ea; color: #1e3a2e; line-height: 1.6; padding: 1rem; }
+.app { max-width: 1000px; margin: 0 auto; background: white; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,40,0,0.08); padding: 2rem 1.5rem; }
+h1 { font-size: 2rem; color: #1e4620; border-left: 8px solid #4caf50; padding-left: 1.2rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.4rem; color: #2e5e2e; margin: 1.5rem 0 1rem; border-bottom: 2px dashed #b8d9b0; padding-bottom: 0.3rem; }
+h3 { font-size: 1.15rem; margin: 1rem 0 0.5rem; color: #1e4a1e; }
+.sub { color: #3d5e3d; margin-bottom: 1.5rem; }
+.card { background: #f9fff7; border-radius: 24px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid #d4e8cc; }
+.btn { background: #2e7d32; color: white; border: none; padding: 0.8rem 2rem; border-radius: 60px; font-size: 1rem; font-weight: 600; cursor: pointer; margin: 0.5rem 0.5rem 0.5rem 0; }
+.btn:hover { background: #1b5e20; }
+.btn:disabled { background: #a5c9a5; cursor: not-allowed; }
+.btn-outline { background: transparent; border: 2px solid #2e7d32; color: #2e7d32; }
+.btn-small { padding: 0.4rem 1.2rem; font-size: 0.9rem; }
+input { padding: 0.8rem 1rem; border-radius: 40px; border: 2px solid #c0ddb6; font-size: 1rem; width: 100%; max-width: 400px; margin: 0.3rem 0 1rem; }
+label { font-weight: 500; display: block; margin-top: 0.5rem; }
+.test-q { background: #f5faf2; border-radius: 20px; padding: 1rem 1.2rem; margin-bottom: 1rem; border-left: 6px solid #8bc34a; }
+.test-q p { font-weight: 600; margin-bottom: 0.6rem; }
+.opt { display: flex; align-items: center; gap: 0.6rem; margin: 0.4rem 0; cursor: pointer; padding: 0.3rem 0.6rem; border-radius: 40px; }
+.opt:hover { background: #e2f0da; }
+.opt input { width: 18px; height: 18px; max-width: 18px; margin: 0; }
+.hidden { display: none !important; }
+.note { background: #fff3cd; border: 2px solid #ffc107; color: #856404; padding: 1rem 1.2rem; border-radius: 20px; margin: 1rem 0; font-weight: 600; }
+.note::before { content: "📓 "; }
+.success { background: #dff0d8; color: #1e5e1e; padding: 0.8rem 1.2rem; border-radius: 40px; margin: 0.8rem 0; }
+.error { background: #f8d7da; color: #721c24; padding: 0.8rem 1.2rem; border-radius: 40px; margin: 0.8rem 0; }
+.img-box { background: #e3f0db; border-radius: 20px; padding: 1rem; text-align: center; margin: 1rem 0; border: 2px dashed #b0d0a0; }
+.img-box img { max-width: 100%; height: auto; border-radius: 10px; }
+.cap { font-size: 0.85rem; font-style: italic; color: #4a6b4a; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th { background: #c8e6c9; text-align: left; padding: 0.6rem; }
+td { padding: 0.6rem; border-bottom: 1px solid #d4e8cc; vertical-align: top; }
+textarea { width: 100%; padding: 0.7rem; border-radius: 16px; border: 2px solid #c0ddb6; font-family: inherit; min-height: 70px; margin: 0.3rem 0 0.8rem; }
+.row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.res-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem; }
+.res-table th { background: #2e7d32; color: white; padding: 0.5rem; text-align: left; }
+.res-table td { padding: 0.5rem; border-bottom: 1px solid #d4e8cc; }
+.admin-box { margin-top: 2rem; border-top: 3px solid #b8d9b0; padding-top: 1.5rem; }
+.progress { background: #e8f5e9; border-radius: 40px; padding: 0.4rem 1rem; font-weight: 600; color: #1e5e1e; display: inline-block; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="app">
+    <h1>🌱 Виды корней и типы корневых систем</h1>
+    <div class="sub">Урок биологии · 6 класс</div>
+
+    <!-- ШАГ 1: данные ученика -->
+    <div id="step1" class="card" style="background:#f1f9ed;">
+        <h2 style="border:none; margin-top:0;">👤 Данные ученика</h2>
+        <label>Фамилия</label>
+        <input type="text" id="surname" placeholder="Иванов">
+        <label>Имя</label>
+        <input type="text" id="name" placeholder="Иван">
+        <label>Класс</label>
+        <input type="text" id="classNum" placeholder="6А">
+        <button type="button" class="btn" id="btnSaveStudent">Сохранить и начать</button>
+        <div id="msgStudent"></div>
+    </div>
+
+    <!-- ШАГ 2: урок -->
+    <div id="step2" class="hidden">
+        <div class="row" style="justify-content:space-between;">
+            <div class="progress" id="progressLabel">📖 Проверка домашнего задания</div>
+            <span id="studentDisplay" style="font-size:0.9rem; color:#4a6b4a;"></span>
+        </div>
+
+        <!-- ДЗ тест -->
+        <div class="card">
+            <h2>📝 Проверка домашнего задания: «Строение семени»</h2>
+            <div id="hwQuestions"></div>
+            <button type="button" class="btn" id="btnSubmitHW">Проверить и перейти к уроку</button>
+            <div id="msgHW"></div>
+        </div>
+
+        <!-- Новый материал -->
+        <div id="newMaterial" class="hidden">
+            <div class="card" style="background:#f4faf0;">
+                <h2>🌿 Новый материал</h2>
+
+                <div class="note">
+                    Все определенияиз этого раздела, схемы и таблицу зон корня нужно записать в рабочую тетрадь. Это поможет выполнить проверочныю работу работу.
+                </div>
+
+                <p><strong>Корень</strong> — подземный орган растения. Он удерживает растение в почве, всасывает воду с минеральными солями и запасает питательные вещества.</p>
+                <p>Когда семя прорастает, первым появляется корешок. Он растёт вниз — ему нужно закрепиться и найти воду. Без корня растение упало бы и погибло.</p>
+
+                <h3>Виды корней</h3>
+                <div class="img-box">
+                    <img src="https://fsd.multiurok.ru/html/2018/06/18/s_5b27303674ae0/img2.jpg" alt="Виды корней">
+                    <div class="cap">Схема: 1 — главный корень, 2 — боковые корни, 3 — придаточные корни</div>
+                </div>
+                <ul style="margin-left:1.5rem;">
+                    <li><strong>Главный корень</strong> — развивается из зародышевого корешка семени. Он первый и обычно самый толстый.</li>
+                    <li><strong>Боковые корни</strong> — отходят от главного и от других корней. Делают корневую систему разветвлённой.</li>
+                    <li><strong>Придаточные корни</strong> — образуются на стебле или листьях. У пшеницы и лука именно они составляют основную массу корней.</li>
+                </ul>
+
+                <h3>Типы корневых систем</h3>
+                <p><strong>Корневая система</strong> — совокупность всех корней растения.</p>
+                <div class="row" style="margin:1rem 0;">
+                    <div style="flex:1; min-width:200px; background:#e8f5e9; padding:1rem; border-radius:16px;">
+                        <strong>Стержневая</strong><br>Хорошо виден главный корень. Бывает у двудольных: одуванчик, фасоль, морковь, крапива.
+                    </div>
+                    <div style="flex:1; min-width:200px; background:#e8f5e9; padding:1rem; border-radius:16px;">
+                        <strong>Мочковатая</strong><br>Главный корень почти не заметен, много придаточных. Бывает у однодольных: пшеница, лук, ландыш, кукуруза.
+                    </div>
+                </div>
+                <div class="img-box">
+                    <img src="https://cf.ppt-online.org/files1/slide/4/4Gz30PBfQK9SvaLIYjWXitmAO5s6xnclpqRDT8Hyo/slide-0.jpg" alt="Типы корневых систем">
+                    <div class="cap">Слева — стержневая система, справа — мочковатая</div>
+                </div>
+                <p><strong>Как определить?</strong> Если один корень явно толще и длиннее остальных — стержневая. Если все корни примерно одинаковые и главного не видно — мочковатая.</p>
+
+                <h3>Внутреннее строение корня: зоны</h3>
+                <div class="img-box">
+                    <img src="https://studarium.ru/public/img/articles/max/78.jpg" alt="Зоны корня">
+                    <div class="cap">Зоны корня от кончика вверх: чехлик → деление → растяжение → всасывание → проведение</div>
+                </div>
+                <table>
+                    <tr><th>Зона</th><th>Что происходит и зачем</th></tr>
+                    <tr><td><strong>1. Корневой чехлик</strong></td><td>«Шапочка» на кончике. Защищает нежные клетки, пока корень пробирается сквозь почву.</td></tr>
+                    <tr><td><strong>2. Зона деления</strong></td><td>Клетки активно делятся. Образуются новые клетки для роста корня.</td></tr>
+                    <tr><td><strong>3. Зона растяжения</strong></td><td>Клетки вытягиваются. Корень удлиняется и продвигается вглубь.</td></tr>
+                    <tr><td><strong>4. Зона всасывания</strong></td><td>Здесь корневые волоски — тонкие выросты клеток. Они всасывают воду и минеральные вещества из почвы.</td></tr>
+                    <tr><td><strong>5. Зона проведения</strong></td><td>По ней вода и вещества поднимаются к стеблю. Здесь появляются боковые корни.</td></tr>
+                </table>
+                <p>Корневые волоски живут несколько дней, но их очень много — площадь всасывания увеличивается в десятки раз.</p>
+
+                <h3>Поперечный срез корня</h3>
+                <p>Если разрезать корень поперёк (как колбасу), мы увидим три слоя клеток — три части:</p>
+                <div class="img-box">
+                    <img src="https://i.pinimg.com/originals/2c/7f/ed/2c7fedcbe52c42483402213ba8c7c40d.jpg" alt="Поперечный срез корня">
+                    <div class="cap">Поперечный срез корня: кожица (с корневыми волосками), кора и центральный цилиндр с проводящими тканями</div>
+                </div>
+                <ul style="margin-left:1.5rem;">
+                    <li><strong>Кожица (ризодерма)</strong> — наружный слой. Через неё, в том числе с помощью корневых волосков, в корень поступает вода и минеральные вещества.</li>
+                    <li><strong>Кора</strong> — слой под кожицей. Состоит в основном из клеток основной ткани, в которых могут накапливаться питательные вещества.</li>
+                    <li><strong>Центральный цилиндр</strong> — внутренняя часть корня. В нём находятся проводящие ткани: по одним сосудам вода с минеральными солями поднимается вверх к стеблю, по другим — органические вещества перемещаются по растению.</li>
+                </ul>
+                <p>Все три части работают вместе: кожица всасывает, кора запасает и проводит, центральный цилиндр обеспечивает передвижение веществ по всему растению.</p>
+
+                <p style="margin-top:1rem; background:#e8f5e9; padding:1rem; border-radius:16px;"><strong>Коротко для тетради:</strong> корень — орган, удерживающий растение и всасывающий воду. Корни: главный, боковые, придаточные. Стержневая система — с главным корнем, мочковатая — без него. Зоны корня: чехлик → деление → растяжение → всасывание → проведение. На поперечном срезе: кожица, кора, центральный цилиндр.</p>
+
+                <button type="button" class="btn" id="btnStartTest" style="margin-top:1rem;">Перейти к проверочной работе</button>
+            </div>
+        </div>
+
+        <!-- Текущий тест -->
+        <div id="currentTest" class="hidden">
+            <div class="card">
+                <h2>✅ Проверочная работа по теме</h2>
+                <div id="curQuestions"></div>
+                <button type="button" class="btn" id="btnSubmitCur">Завершить проверочную работу</button>
+                <div id="msgCur"></div>
+            </div>
+        </div>
+
+        <!-- Рефлексия -->
+        <div id="reflection" class="hidden">
+            <div class="card" style="background:#f4faf0;">
+                <h2>💭 Рефлексия</h2>
+                <label>1. Что я узнал сегодня на уроке?</label>
+                <textarea id="r1"></textarea>
+                <label>2. Чем стержневая корневая система отличается от мочковатой?</label>
+                <textarea id="r2"></textarea>
+                <label>3. Какой факт о корнях меня удивил?</label>
+                <textarea id="r3"></textarea>
+                <label>4. Какое растение захотелось рассмотреть внимательнее?</label>
+                <textarea id="r4"></textarea>
+                <button type="button" class="btn" id="btnFinish">Завершить урок и сохранить</button>
+                <div id="msgFinish"></div>
+            </div>
+        </div>
+
+        <!-- Админ -->
+        <div class="admin-box">
+            <h2>🔐 Панель учителя</h2>
+            <div class="row">
+                <input type="password" id="adminPass" placeholder="Пароль" style="width:180px; margin:0;">
+                <button type="button" class="btn btn-small btn-outline" id="btnAdmin">Войти</button>
+                <span id="msgAdmin" style="font-size:0.85rem;"></span>
+            </div>
+            <div id="adminResults" class="hidden" style="margin-top:1rem;">
+                <div class="row" style="justify-content:space-between;">
+                    <strong>📊 Результаты</strong>
+                    <button type="button" class="btn-small btn-outline btn" id="btnRefresh">Обновить</button>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="res-table">
+                        <thead><tr><th>Фамилия</th><th>Имя</th><th>Класс</th><th>ДЗ</th><th>Текущий</th><th>Рефлексия</th><th>Дата</th></tr></thead>
+                        <tbody id="resBody"></tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn-small btn-outline btn" id="btnExport">📥 Экспорт JSON</button>
+                <button type="button" class="btn-small btn-outline btn" id="btnClear" style="color:#b71c1c; border-color:#b71c1c;">🗑 Очистить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ===== ВОПРОСЫ =====
+var HW = [
+    { t: "Что такое семя?", o: ["Генеративный орган растения, содержащий зародыш", "Вегетативный орган", "Часть цветка"], c: 0 },
+    { t: "Какие основные части можно выделить в строении семени?", o: ["Семенная кожура, зародыш, эндосперм", "Стебель и листья", "Корень и побег"], c: 0 },
+    { t: "Какую функцию выполняет семенная кожура?", o: ["Защитную", "Питательную", "Проводящую"], c: 0 },
+    { t: "Какие части входят в состав зародыша?", o: ["Корешок, стебелёк, почечка, семядоли", "Кожура, эндосперм", "Только семядоли"], c: 0 },
+    { t: "Что такое эндосперм?", o: ["Ткань в семени с питательными веществами", "Защитная оболочка", "Часть корня"], c: 0 },
+    { t: "Где находится основная часть запасных питательных веществ у пшеницы?", o: ["В эндосперме", "В семядолях", "В кожуре"], c: 0 },
+    { t: "Чем отличаются семена однодольных и двудольных растений?", o: ["Количеством семядолей", "Наличием кожуры", "Наличием зародыша"], c: 0 },
+    { t: "Почему пшеницу относят к однодольным растениям?", o: ["Она имеет 1 семядолю", "Она имеет 2 семядоли", "У неё нет семядолей"], c: 0 },
+    { t: "Какие растения относятся к двудольным?", o: ["Фасоль, огурец", "Пшеница, лук", "Кукуруза, ячмень"], c: 0 },
+    { t: "Чем покрытосеменные растения отличаются от голосеменных?", o: ["У голосеменных нет цветов и плодов, семена — в шишках", "У голосеменных есть цветы", "У покрытосеменных нет семян"], c: 0 }
+];
+
+var CUR = [
+    { t: "Какой корень развивается из зародышевого корешка семени?", o: ["Главный", "Боковой", "Придаточный"], c: 0 },
+    { t: "Где образуются придаточные корни?", o: ["На стеблях и листьях", "Только из главного корня", "Только из боковых корней"], c: 0 },
+    { t: "Что такое корневая система?", o: ["Совокупность всех корней растения", "Только главный корень", "Только боковые корни"], c: 0 },
+    { t: "Для какого растения характерна стержневая корневая система?", o: ["Одуванчик", "Пшеница", "Ландыш"], c: 0 },
+    { t: "Для какого растения характерна мочковатая корневая система?", o: ["Пшеница", "Фасоль", "Крапива"], c: 0 },
+    { t: "Какая зона корня защищает клетки от повреждений?", o: ["Корневой чехлик", "Зона деления", "Зона всасывания"], c: 0 },
+    { t: "В какой зоне образуются корневые волоски?", o: ["Зона всасывания", "Зона проведения", "Зона растяжения"], c: 0 },
+    { t: "Что происходит в зоне проведения?", o: ["Передвижение веществ и образование боковых корней", "Активное деление клеток", "Поглощение воды"], c: 0 },
+    { t: "Какая ткань находится в центральном цилиндре корня?", o: ["Проводящая", "Основная", "Покровная"], c: 0 },
+    { t: "У каких растений чаще встречается мочковатая корневая система?", o: ["Однодольных", "Двудольных", "Голосеменных"], c: 0 }
+];
+
+// ===== СОСТОЯНИЕ =====
+var student = null;
+var hwAns = [];
+var curAns = [];
+
+// ===== УТИЛИТЫ =====
+function el(id) { return document.getElementById(id); }
+function msg(id, text, cls) { var e = el(id); if (e) e.innerHTML = '<div class="' + cls + '">' + text + '</div>'; }
+
+function render(containerId, qs, type) {
+    var box = el(containerId);
+    if (!box) return;
+    box.innerHTML = '';
+    qs.forEach(function(q, i) {
+        var d = document.createElement('div');
+        d.className = 'test-q';
+        var p = document.createElement('p');
+        p.textContent = (i+1) + '. ' + q.t;
+        d.appendChild(p);
+        q.o.forEach(function(text, j) {
+            var lab = document.createElement('label');
+            lab.className = 'opt';
+            var r = document.createElement('input');
+            r.type = 'radio';
+            r.name = type + '_' + i;
+            r.value = j;
+            r.onchange = function() {
+                if (type === 'hw') hwAns[i] = j;
+                else curAns[i] = j;
+            };
+            lab.appendChild(r);
+            lab.appendChild(document.createTextNode(text));
+            d.appendChild(lab);
+        });
+        box.appendChild(d);
+    });
+}
+
+function count(qs, ans) {
+    var c = 0;
+    qs.forEach(function(q, i) { if (ans[i] === q.c) c++; });
+    return c;
+}
+
+// ===== РЕЗУЛЬТАТЫ =====
+function getRes() {
+    try { return JSON.parse(localStorage.getItem('bio_results') || '[]'); }
+    catch(e) { return []; }
+}
+function saveRes(r) {
+    var a = getRes();
+    a.push(r);
+    localStorage.setItem('bio_results', JSON.stringify(a));
+}
+function drawRes() {
+    var a = getRes();
+    var tb = el('resBody');
+    if (!tb) return;
+    tb.innerHTML = '';
+    if (!a.length) { tb.innerHTML = '<tr><td colspan="7">Нет результатов.</td></tr>'; return; }
+    a.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + r.sn + '</td><td>' + r.nm + '</td><td>' + r.cl + '</td>' +
+            '<td>' + r.hw + '/' + r.hwT + '</td><td>' + r.cur + '/' + r.curT + '</td>' +
+            '<td>' + (r.r1 ? r.r1.substring(0,15)+'…' : '—') + '</td><td>' + r.dt + '</td>';
+        tb.appendChild(tr);
+    });
+}
+
+// ===== ИНИЦИАЛИЗАЦИЯ =====
+function init() {
+    render('hwQuestions', HW, 'hw');
+    render('curQuestions', CUR, 'cur');
+
+    // Кнопка "Сохранить и начать"
+    var btn = el('btnSaveStudent');
+    if (btn) {
+        btn.onclick = function() {
+            var sn = el('surname').value.trim();
+            var nm = el('name').value.trim();
+            var cl = el('classNum').value.trim();
+            if (!sn || !nm || !cl) {
+                msg('msgStudent', 'Заполните все поля: фамилия, имя, класс.', 'error');
+                return;
+            }
+            student = { sn: sn, nm: nm, cl: cl };
+            el('studentDisplay').textContent = sn + ' ' + nm + ', ' + cl + ' класс';
+            el('step1').classList.add('hidden');
+            el('step2').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        };
+    }
+
+    // Кнопка проверки ДЗ
+    var btnHW = el('btnSubmitHW');
+    if (btnHW) {
+        btnHW.onclick = function() {
+            var un = HW.some(function(_, i) { return hwAns[i] === undefined; });
+            if (un) { msg('msgHW', 'Ответьте на все вопросы.', 'error'); return; }
+            var c = count(HW, hwAns);
+            msg('msgHW', '✅ Правильно: ' + c + ' из ' + HW.length + '. Переходим к новому материалу.', 'success');
+            el('newMaterial').classList.remove('hidden');
+            el('newMaterial').scrollIntoView({ behavior: 'smooth' });
+            el('progressLabel').textContent = '📖 Новый материал (записать в тетрадь!)';
+        };
+    }
+
+    // Кнопка "Перейти к проверочной"
+    var btnStart = el('btnStartTest');
+    if (btnStart) {
+        btnStart.onclick = function() {
+            el('currentTest').classList.remove('hidden');
+            el('currentTest').scrollIntoView({ behavior: 'smooth' });
+            el('progressLabel').textContent = '📝 Проверочная работа';
+        };
+    }
+
+    // Кнопка проверки текущего теста
+    var btnCur = el('btnSubmitCur');
+    if (btnCur) {
+        btnCur.onclick = function() {
+            var un = CUR.some(function(_, i) { return curAns[i] === undefined; });
+            if (un) { msg('msgCur', 'Ответьте на все вопросы.', 'error'); return; }
+            var c = count(CUR, curAns);
+            msg('msgCur', '✅ Правильных ответов: ' + c + ' из ' + CUR.length + '.', 'success');
+            el('reflection').classList.remove('hidden');
+            el('reflection').scrollIntoView({ behavior: 'smooth' });
+            el('progressLabel').textContent = '💭 Рефлексия';
+        };
+    }
+
+    // Кнопка завершения
+    var btnFin = el('btnFinish');
+    if (btnFin) {
+        btnFin.onclick = function() {
+            if (!student) { alert('Данные не сохранены.'); return; }
+            var r1 = el('r1').value.trim();
+            var r2 = el('r2').value.trim();
+            var r3 = el('r3').value.trim();
+            var r4 = el('r4').value.trim();
+            saveRes({
+                sn: student.sn, nm: student.nm, cl: student.cl,
+                hw: count(HW, hwAns), hwT: HW.length,
+                cur: count(CUR, curAns), curT: CUR.length,
+                r1: r1, r2: r2, r3: r3, r4: r4,
+                dt: new Date().toLocaleString('ru-RU')
+            });
+            msg('msgFinish', '✅ Результаты сохранены! Спасибо за урок.', 'success');
+            btnFin.disabled = true;
+            el('progressLabel').textContent = '🏁 Урок завершён';
+            if (!el('adminResults').classList.contains('hidden')) drawRes();
+        };
+    }
+
+    // Админ
+    var btnAdm = el('btnAdmin');
+    if (btnAdm) {
+        btnAdm.onclick = function() {
+            if (el('adminPass').value === '12345@') {
+                el('adminResults').classList.remove('hidden');
+                el('msgAdmin').textContent = 'Доступ разрешён';
+                drawRes();
+            } else {
+                el('msgAdmin').textContent = 'Неверный пароль';
+                el('adminResults').classList.add('hidden');
+            }
+        };
+    }
+
+    var btnRef = el('btnRefresh');
+    if (btnRef) btnRef.onclick = drawRes;
+
+    var btnExp = el('btnExport');
+    if (btnExp) {
+        btnExp.onclick = function() {
+            var data = JSON.stringify(getRes(), null, 2);
+            var blob = new Blob([data], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'bio_results.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+    }
+
+    var btnClr = el('btnClear');
+    if (btnClr) {
+        btnClr.onclick = function() {
+            if (confirm('Удалить все результаты?')) {
+                localStorage.removeItem('bio_results');
+                drawRes();
+            }
+        };
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
+</script>
+</body>
+</html>

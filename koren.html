@@ -198,7 +198,7 @@ textarea { width: 100%; padding: 0.7rem; border-radius: 16px; border: 2px solid 
 <script>
 var API_URL = "https://script.google.com/macros/s/AKfycbzM50e0UslRY4vHj9xJxykTHxJXyDTwcB5DsCm5egGUDr_kgwBcKa4yVzyInWiQ7_wetQ/exec";
 
-/* ===== ИСХОДНЫЕ ВОПРОСЫ (правильный ответ всегда индекс 0) ===== */
+/* ===== ИСХОДНЫЕ ВОПРОСЫ (правильный ответ — индекс 0) ===== */
 var HW_RAW = [
     { t: "Что такое семя?", o: ["Генеративный орган растения, содержащий зародыш", "Вегетативный орган", "Часть цветка"], c: 0 },
     { t: "Какие основные части можно выделить в строении семени?", o: ["Семенная кожура, зародыш, эндосперм", "Стебель и листья", "Корень и побег"], c: 0 },
@@ -225,7 +225,7 @@ var CUR_RAW = [
     { t: "У каких растений чаще встречается мочковатая корневая система?", o: ["Однодольных", "Двудольных", "Голосеменных"], c: 0 }
 ];
 
-/* ===== ПЕРЕМЕШИВАНИЕ (Fisher–Yates) + перенос правильного ответа ===== */
+/* ===== ПЕРЕМЕШИВАНИЕ + ПЕРЕНОС ПРАВИЛЬНОГО ОТВЕТА ===== */
 function shuffle(arr) {
     var a = arr.slice();
     for (var i = a.length - 1; i > 0; i--) {
@@ -242,7 +242,6 @@ function mixQuestions(raw) {
     });
 }
 
-// Перемешиваем ОБА теста при каждой загрузке
 var HW = mixQuestions(HW_RAW);
 var CUR = mixQuestions(CUR_RAW);
 
@@ -326,7 +325,7 @@ function loadFromServer(cb) {
     xhr.send();
 }
 
-/* ===== ТАБЛИЦА ===== */
+/* ===== ТАБЛИЦА РЕЗУЛЬТАТОВ ===== */
 function drawResFromRows(rows) {
     var tb = el('resBody');
     if (!tb) return;
@@ -358,11 +357,8 @@ function drawResLocal() {
 }
 
 /* ===== ЭКСПОРТ В EXCEL ===== */
-/* Формируем HTML-таблицу и отдаём как .xls — Excel и LibreOffice открывают её корректно.
-   Данные берём с сервера, если он ответил; иначе — из localStorage. */
 function exportExcel() {
     function build(rows) {
-        // rows — массив массивов (первая строка — заголовок)
         var html = '<html><head><meta charset="UTF-8"></head><body>';
         html += '<table border="1" cellspacing="0" cellpadding="4">';
         rows.forEach(function(row, ri) {
@@ -377,7 +373,6 @@ function exportExcel() {
         });
         html += '</table></body></html>';
 
-        // BOM нужен, чтобы Excel корректно показал русские буквы
         var blob = new Blob(['\ufeff' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
         var url = URL.createObjectURL(blob);
         var a = document.createElement('a');
@@ -397,7 +392,6 @@ function exportExcel() {
             data = rows;
             if (data.length && String(data[0][0]).toLowerCase() !== 'фамилия') data = [header].concat(data);
         } else {
-            // fallback — локальные результаты
             var local = getLocalRes();
             data = [header];
             local.forEach(function(r) {
@@ -473,7 +467,22 @@ function init() {
         btnFin.onclick = function() {
             if (!student) { alert('Данные не сохранены.'); return; }
             var result = {
-                sn: student.sn, nm: student.nm, cl: student.cl,
-                hw: count(HW, hwAns), hwT: HW.length,
-                cur: count(CUR, curAns), curT: CUR.length,
-                r1: el('r
+                sn: student.sn,
+                nm: student.nm,
+                cl: student.cl,
+                hw: count(HW, hwAns),
+                hwT: HW.length,
+                cur: count(CUR, curAns),
+                curT: CUR.length,
+                r1: el('r1').value.trim(),
+                r2: el('r2').value.trim(),
+                r3: el('r3').value.trim(),
+                r4: el('r4').value.trim(),
+                dt: new Date().toLocaleString('ru-RU')
+            };
+            btnFin.disabled = true;
+            msg('msgFinish', '⏳ Отправляем результаты...', 'success');
+            sendToServer(result, function(res) {
+                if (res.ok) {
+                    msg('msgFinish', '✅ Результаты отправлены учителю! Спасибо за урок.', 'success');
+                } else

@@ -194,250 +194,77 @@ textarea { width: 100%; padding: 0.7rem; border-radius: 16px; border: 2px solid 
 var API_URL = "https://script.google.com/macros/s/AKfycbzM50e0UslRY4vHj9xJxykTHxJXyDTwcB5DsCm5egGUDr_kgwBcKa4yVzyInWiQ7_wetQ/exec";
 var SHEET_NAME = "Видоизменения корней";
 
-/* ===== ТЕСТ ПО ПРОЙДЕННОЙ ТЕМЕ (правильный — индекс 0) ===== */
+/* ===== ТЕСТ ПО ПРОЙДЕННОЙ ТЕМЕ ===== */
 var HW_RAW = [
-    { t: "Какой корень развивается из зародышевого корешка семени?", o: ["Главный", "Боковой", "Придаточный"], c: 0 },
-    { t: "Где образуются придаточные корни?", o: ["На стеблях и листьях", "Только из главного корня", "Только из боковых корней"], c: 0 },
-    { t: "Что такое корневая система?", o: ["Совокупность всех корней растения", "Только главный корень", "Только боковые корни"], c: 0 },
-    { t: "Для какого растения характерна стержневая корневая система?", o: ["Одуванчик", "Пшеница", "Ландыш"], c: 0 },
-    { t: "Для какого растения характерна мочковатая корневая система?", o: ["Пшеница", "Фасоль", "Крапива"], c: 0 },
-    { t: "Какая зона корня защищает клетки от повреждений?", o: ["Корневой чехлик", "Зона деления", "Зона всасывания"], c: 0 },
-    { t: "В какой зоне образуются корневые волоски?", o: ["Зона всасывания", "Зона проведения", "Зона растяжения"], c: 0 },
-    { t: "Что происходит в зоне проведения?", o: ["Передвижение веществ и образование боковых корней", "Активное деление клеток", "Поглощение воды"], c: 0 },
-    { t: "Какая ткань находится в центральном цилиндре корня?", o: ["Проводящая", "Основная", "Покровная"], c: 0 },
-    { t: "У каких растений чаще встречается мочковатая корневая система?", o: ["Однодольных", "Двудольных", "Голосеменных"], c: 0 }
+ {t:"Какой корень развивается из зародышевого корешка семени?",o:["Главный","Боковой","Придаточный"],c:0},
+ {t:"Где образуются придаточные корни?",o:["На стеблях и листьях","Только из главного корня","Только из боковых корней"],c:0},
+ {t:"Что такое корневая система?",o:["Совокупность всех корней растения","Только главный корень","Только боковые корни"],c:0},
+ {t:"Для какого растения характерна стержневая корневая система?",o:["Одуванчик","Пшеница","Ландыш"],c:0},
+ {t:"Для какого растения характерна мочковатая корневая система?",o:["Пшеница","Фасоль","Крапива"],c:0},
+ {t:"Какая зона корня защищает клетки от повреждений?",o:["Корневой чехлик","Зона деления","Зона всасывания"],c:0},
+ {t:"В какой зоне образуются корневые волоски?",o:["Зона всасывания","Зона проведения","Зона растяжения"],c:0},
+ {t:"Что происходит в зоне проведения?",o:["Передвижение веществ и образование боковых корней","Активное деление клеток","Поглощение воды"],c:0},
+ {t:"Какая ткань находится в центральном цилиндре корня?",o:["Проводящая","Основная","Покровная"],c:0},
+ {t:"У каких растений чаще встречается мочковатая корневая система?",o:["Однодольных","Двудольных","Голосеменных"],c:0}
 ];
 
 /* ===== ТЕСТ ПО НОВОЙ ТЕМЕ ===== */
 var CUR_RAW = [
-    { t: "Что такое видоизменения корней?", o: ["Изменения формы и строения корней, связанные с дополнительными функциями", "Только утолщение главного корня", "Всегда отмирание корней"], c: 0 },
-    { t: "Какое видоизменение корня характерно для моркови?", o: ["Корнеплод", "Корневой клубень", "Корень-прицепка"], c: 0 },
-    { t: "Какое видоизменение корня характерно для георгина?", o: ["Корневой клубень", "Корнеплод", "Дыхательный корень"], c: 0 },
-    { t: "Какую функцию выполняют корни-прицепки?", o: ["Прикрепление к опоре", "Запас питательных веществ", "Получение кислорода"], c: 0 },
-    { t: "Для какого растения характерны дыхательные корни?", o: ["Мангровые растения", "Морковь", "Плющ"], c: 0 },
-    { t: "Чем корнеплод отличается от корневого клубня?", o: ["У корнеплода утолщается главный корень, у клубня — боковые и придаточные", "Ничем не отличаются", "Корнеплод — это всегда придаточный корень"], c: 0 },
-    { t: "Какие растения имеют корнеплоды?", o: ["Морковь и свёкла", "Георгин и батат", "Плющ и орхидея"], c: 0 },
-    { t: "Почему видоизменения корней считают приспособлением?", o: ["Потому что они позволяют выполнять дополнительные функции", "Потому что все корни одинаковы", "Потому что корни не меняются"], c: 0 },
-    { t: "Что накапливают корнеплоды и корневые клубни?", o: ["Питательные вещества", "Только воду", "Кислород"], c: 0 },
-    { t: "Какое видоизменение помогает растению получать кислород из воздуха?", o: ["Дыхательные корни", "Корнеплод", "Корень-прицепка"], c: 0 }
+ {t:"Что такое видоизменения корней?",o:["Изменения формы и строения корней, связанные с дополнительными функциями","Только утолщение главного корня","Всегда отмирание корней"],c:0},
+ {t:"Какое видоизменение корня характерно для моркови?",o:["Корнеплод","Корневой клубень","Корень-прицепка"],c:0},
+ {t:"Какое видоизменение корня характерно для георгина?",o:["Корневой клубень","Корнеплод","Дыхательный корень"],c:0},
+ {t:"Какую функцию выполняют корни-прицепки?",o:["Прикрепление к опоре","Запас питательных веществ","Получение кислорода"],c:0},
+ {t:"Для какого растения характерны дыхательные корни?",o:["Мангровые растения","Морковь","Плющ"],c:0},
+ {t:"Чем корнеплод отличается от корневого клубня?",o:["У корнеплода утолщается главный корень, у клубня — боковые и придаточные","Ничем не отличаются","Корнеплод — это всегда придаточный корень"],c:0},
+ {t:"Какие растения имеют корнеплоды?",o:["Морковь и свёкла","Георгин и батат","Плющ и орхидея"],c:0},
+ {t:"Почему видоизменения корней считают приспособлением?",o:["Потому что они позволяют выполнять дополнительные функции","Потому что все корни одинаковы","Потому что корни не меняются"],c:0},
+ {t:"Что накапливают корнеплоды и корневые клубни?",o:["Питательные вещества","Только воду","Кислород"],c:0},
+ {t:"Какое видоизменение помогает растению получать кислород из воздуха?",o:["Дыхательные корни","Корнеплод","Корень-прицепка"],c:0}
 ];
 
-/* ===== ПЕРЕМЕШИВАНИЕ ===== */
-function shuffle(arr) {
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
-}
-function mixQuestions(raw) {
-    return raw.map(function(q) {
-        var correctText = q.o[q.c];
-        var shuffled = shuffle(q.o);
-        return { t: q.t, o: shuffled, c: shuffled.indexOf(correctText) };
-    });
-}
-var HW = mixQuestions(HW_RAW);
-var CUR = mixQuestions(CUR_RAW);
+function shuffle(arr){var a=arr.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function mixQuestions(raw){return raw.map(function(q){var correct=q.o[q.c],opts=shuffle(q.o);return {t:q.t,o:opts,c:opts.indexOf(correct)};});}
+var HW=mixQuestions(HW_RAW), CUR=mixQuestions(CUR_RAW);
+var student=null, hwAns=[], curAns=[], sending=false;
+function el(id){return document.getElementById(id);}
+function msg(id,text,cls){var e=el(id);if(e)e.innerHTML='<div class="'+(cls||'success')+'">'+text+'</div>';}
+function render(containerId,qs,type){var box=el(containerId);if(!box)return;box.innerHTML='';qs.forEach(function(q,i){var d=document.createElement('div');d.className='test-q';var p=document.createElement('p');p.textContent=(i+1)+'. '+q.t;d.appendChild(p);q.o.forEach(function(option,j){var lab=document.createElement('label');lab.className='opt';var r=document.createElement('input');r.type='radio';r.name=type+'_'+i;r.value=j;r.onchange=function(){if(type==='hw')hwAns[i]=j;else curAns[i]=j;};lab.appendChild(r);lab.appendChild(document.createTextNode(option));d.appendChild(lab);});box.appendChild(d);});}
+function count(qs,ans){var n=0;qs.forEach(function(q,i){if(ans[i]===q.c)n++;});return n;}
 
-var student = null;
-var hwAns = [];
-var curAns = [];
-
-function el(id) { return document.getElementById(id); }
-function msg(id, text, cls) { var e = el(id); if (e) e.innerHTML = '<div class="' + cls + '">' + text + '</div>'; }
-
-function render(containerId, qs, type) {
-    var box = el(containerId);
-    if (!box) return;
-    box.innerHTML = '';
-    qs.forEach(function(q, i) {
-        var d = document.createElement('div');
-        d.className = 'test-q';
-        var p = document.createElement('p');
-        p.textContent = (i+1) + '. ' + q.t;
-        d.appendChild(p);
-        q.o.forEach(function(text, j) {
-            var lab = document.createElement('label');
-            lab.className = 'opt';
-            var r = document.createElement('input');
-            r.type = 'radio';
-            r.name = type + '_' + i;
-            r.value = j;
-            r.onchange = function() {
-                if (type === 'hw') hwAns[i] = j;
-                else curAns[i] = j;
-            };
-            lab.appendChild(r);
-            lab.appendChild(document.createTextNode(text));
-            d.appendChild(lab);
-        });
-        box.appendChild(d);
-    });
+/* ===== ОТПРАВКА В GOOGLE SHEETS ===== */
+function sendToServer(data,callback){
+ var xhr=new XMLHttpRequest();
+ xhr.open('POST',API_URL,true);
+ xhr.setRequestHeader('Content-Type','text/plain;charset=utf-8');
+ xhr.timeout=20000;
+ xhr.onreadystatechange=function(){if(xhr.readyState===4){var ok=xhr.status>=200&&xhr.status<300;var response=null;try{response=JSON.parse(xhr.responseText);}catch(e){}callback({ok:ok&&(!response||response.ok!==false),status:xhr.status,response:response});}};
+ xhr.onerror=function(){callback({ok:false,reason:'network'});};
+ xhr.ontimeout=function(){callback({ok:false,reason:'timeout'});};
+ try{xhr.send(JSON.stringify(data));}catch(e){callback({ok:false,reason:e.message});}
 }
-
-function count(qs, ans) {
-    var c = 0;
-    qs.forEach(function(q, i) { if (ans[i] === q.c) c++; });
-    return c;
+function loadFromServer(callback){
+ var xhr=new XMLHttpRequest();xhr.open('GET',API_URL+'?sheet='+encodeURIComponent(SHEET_NAME),true);xhr.timeout=20000;
+ xhr.onreadystatechange=function(){if(xhr.readyState===4){if(xhr.status>=200&&xhr.status<300){try{var data=JSON.parse(xhr.responseText);callback(Array.isArray(data)?data:(data.rows||data.data||[]));}catch(e){callback(null);}}else callback(null);}};
+ xhr.onerror=function(){callback(null);};xhr.ontimeout=function(){callback(null);};xhr.send();
 }
-
-/* ===== СЕРВЕР ===== */
-function sendToServer(result, cb) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', API_URL, true);
-    xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            cb({ ok: xhr.status === 200, reason: 'http_' + xhr.status });
-        }
-    };
-    xhr.send(JSON.stringify(result));
-}
-function loadFromServer(cb) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', API_URL + '?sheet=' + encodeURIComponent(SHEET_NAME), true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                try { cb(JSON.parse(xhr.responseText)); }
-                catch(e) { cb(null); }
-            } else { cb(null); }
-        }
-    };
-    xhr.send();
-}
-
-/* ===== ТАБЛИЦА ===== */
-function drawResFromRows(rows) {
-    var tb = el('resBody');
-    if (!tb) return;
-    tb.innerHTML = '';
-    var data = rows || [];
-    if (data.length && String(data[0][0]).toLowerCase() === 'фамилия') data = data.slice(1);
-    if (!data.length) { tb.innerHTML = '<tr><td colspan="7">Нет результатов.</td></tr>'; return; }
-    data.forEach(function(r) {
-        var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + (r[0]||'') + '</td><td>' + (r[1]||'') + '</td><td>' + (r[2]||'') + '</td>' +
-            '<td>' + (r[3]||'') + '</td><td>' + (r[4]||'') + '</td>' +
-            '<td>' + (r[5] ? String(r[5]).substring(0,15)+'…' : '—') + '</td><td>' + (r[9]||'') + '</td>';
-        tb.appendChild(tr);
-    });
-}
-
-/* ===== ЭКСПОРТ В EXCEL ===== */
-function exportExcel() {
-    function build(rows) {
-        var html = '<html><head><meta charset="UTF-8"></head><body><table border="1" cellspacing="0" cellpadding="4">';
-        rows.forEach(function(row, ri) {
-            html += '<tr>';
-            row.forEach(function(cell) {
-                var tag = ri === 0 ? 'th' : 'td';
-                var val = (cell === undefined || cell === null) ? '' : String(cell)
-                    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                html += '<' + tag + '>' + val + '</' + tag + '>';
-            });
-            html += '</tr>';
-        });
-        html += '</table></body></html>';
-        var blob = new Blob(['\ufeff' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'Видоизменения_корней_' + new Date().toISOString().slice(0,10) + '.xls';
-        document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
-    msg('msgAdminLoad', 'Готовим Excel-файл...');
-    loadFromServer(function(rows) {
-        var header = ['Фамилия','Имя','Класс','ДЗ','Текущий','Рефлексия 1','Рефлексия 2','Рефлексия 3','Рефлексия 4','Дата'];
-        var data = (rows && rows.length) ? rows : [header];
-        if (data.length && String(data[0][0]).toLowerCase() !== 'фамилия') data = [header].concat(data);
-        build(data);
-        msg('msgAdminLoad', 'Excel-файл сформирован.');
-    });
-}
+function drawResFromRows(rows){var tb=el('resBody');if(!tb)return;tb.innerHTML='';var data=rows||[];if(data.length&&String(data[0][0]).toLowerCase()==='фамилия')data=data.slice(1);if(!data.length){tb.innerHTML='<tr><td colspan="7">Нет результатов.</td></tr>';return;}data.forEach(function(r){var tr=document.createElement('tr');[r[0],r[1],r[2],r[3],r[4],r[5]?String(r[5]).substring(0,15)+'…':'—',r[9]||''].forEach(function(v){var td=document.createElement('td');td.textContent=v==null?'':String(v);tr.appendChild(td);});tb.appendChild(tr);});}
+function refreshResults(){msg('msgAdminLoad','Загружаем результаты...','success');loadFromServer(function(rows){if(rows===null){msg('msgAdminLoad','Не удалось загрузить данные. Проверьте доступ к таблице и настройки Apps Script.','error');return;}drawResFromRows(rows);msg('msgAdminLoad','Данные обновлены.','success');});}
+function exportExcel(){msg('msgAdminLoad','Готовим Excel-файл...','success');loadFromServer(function(rows){if(rows===null){msg('msgAdminLoad','Не удалось получить данные для экспорта.','error');return;}var header=['Фамилия','Имя','Класс','ДЗ','Текущий','Рефлексия 1','Рефлексия 2','Рефлексия 3','Рефлексия 4','Дата'];var data=rows.length?rows:[header];if(data.length&&String(data[0][0]).toLowerCase()!=='фамилия')data=[header].concat(data);var html='<html><head><meta charset="UTF-8"></head><body><table border="1"><tbody>';data.forEach(function(row){html+='<tr>';row.forEach(function(cell){html+='<td>'+String(cell==null?'':cell).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</td>';});html+='</tr>';});html+='</tbody></table></body></html>';var blob=new Blob(['\ufeff'+html],{type:'application/vnd.ms-excel;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='Видоизменения_корней_'+new Date().toISOString().slice(0,10)+'.xls';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},1000);msg('msgAdminLoad','Excel-файл сформирован.','success');});}
 
 /* ===== ИНИЦИАЛИЗАЦИЯ ===== */
-function init() {
-    render('hwQuestions', HW, 'hw');
-    render('curQuestions', CUR, 'cur');
-
-    var btn = el('btnSaveStudent');
-    if (btn) {
-        btn.onclick = function() {
-            var sn = el('surname').value.trim();
-            var nm = el('name').value.trim();
-            var cl = el('classNum').value.trim();
-            if (!sn || !nm || !cl) {
-                msg('msgStudent', 'Заполните все поля: фамилия, имя, класс.', 'error');
-                return;
-            }
-            student = { sn: sn, nm: nm, cl: cl };
-            el('studentDisplay').textContent = sn + ' ' + nm + ', ' + cl + ' класс';
-            el('step1').classList.add('hidden');
-            el('step2').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        };
-    }
-
-    var btnHW = el('btnSubmitHW');
-    if (btnHW) {
-        btnHW.onclick = function() {
-            var un = HW.some(function(_, i) { return hwAns[i] === undefined; });
-            if (un) { msg('msgHW', 'Ответьте на все вопросы.', 'error'); return; }
-            var c = count(HW, hwAns);
-            msg('msgHW', '✅ Правильно: ' + c + ' из ' + HW.length + '. Переходим к новому материалу.', 'success');
-            el('newMaterial').classList.remove('hidden');
-            el('newMaterial').scrollIntoView({ behavior: 'smooth' });
-            el('progressLabel').textContent = '📖 Новый материал';
-        };
-    }
-
-    var btnStart = el('btnStartTest');
-    if (btnStart) {
-        btnStart.onclick = function() {
-            el('currentTest').classList.remove('hidden');
-            el('currentTest').scrollIntoView({ behavior: 'smooth' });
-            el('progressLabel').textContent = '📝 Проверочная работа';
-        };
-    }
-
-    var btnCur = el('btnSubmitCur');
-    if (btnCur) {
-        btnCur.onclick = function() {
-            var un = CUR.some(function(_, i) { return curAns[i] === undefined; });
-            if (un) { msg('msgCur', 'Ответьте на все вопросы.', 'error'); return; }
-            var c = count(CUR, curAns);
-            msg('msgCur', '✅ Правильных ответов: ' + c + ' из ' + CUR.length + '.', 'success');
-            el('reflection').classList.remove('hidden');
-            el('reflection').scrollIntoView({ behavior: 'smooth' });
-            el('progressLabel').textContent = '💭 Рефлексия';
-        };
-    }
-
-    var btnFin = el('btnFinish');
-    if (btnFin) {
-        btnFin.onclick = function() {
-            if (!student) { alert('Данные не сохранены.'); return; }
-            var result = {
-                sheet: SHEET_NAME,
-                sn: student.sn,
-                nm: student.nm,
-                cl: student.cl,
-                hw: count(HW, hwAns),
-                hwT: HW.length,
-                cur: count(CUR, curAns),
-                curT: CUR.length,
-                r1: el('r1').value.trim(),
-                r2: el('r2').value.trim(),
-                r3: el('r3').value.trim(),
-                r4: el('r4').value.trim(),
-                dt: new Date().toLocaleString('ru-RU')
-            };
-            btnFin.disabled = true;
-            msg('msgFinish', '⏳ Отправляем результаты...', 'success');
-            sendToServer(result, function(res) {
-                if (res.ok) {
-                    msg('msgFinish', '✅ Результаты отправлены учи
+function init(){
+ render('hwQuestions',HW,'hw');render('curQuestions',CUR,'cur');
+ var btn=el('btnSaveStudent');if(btn)btn.onclick=function(){var sn=el('surname').value.trim(),nm=el('name').value.trim(),cl=el('classNum').value.trim();if(!sn||!nm||!cl){msg('msgStudent','Заполните все поля: фамилия, имя, класс.','error');return;}student={sn:sn,nm:nm,cl:cl};el('studentDisplay').textContent=sn+' '+nm+', '+cl+' класс';el('step1').classList.add('hidden');el('step2').classList.remove('hidden');window.scrollTo(0,0);};
+ var btnHW=el('btnSubmitHW');if(btnHW)btnHW.onclick=function(){if(HW.some(function(q,i){return hwAns[i]===undefined;})){msg('msgHW','Ответьте на все вопросы.','error');return;}msg('msgHW','✅ Правильно: '+count(HW,hwAns)+' из '+HW.length+'. Переходим к новому материалу.','success');el('newMaterial').classList.remove('hidden');el('newMaterial').scrollIntoView({behavior:'smooth'});el('progressLabel').textContent='📖 Новый материал';};
+ var btnStart=el('btnStartTest');if(btnStart)btnStart.onclick=function(){el('currentTest').classList.remove('hidden');el('currentTest').scrollIntoView({behavior:'smooth'});el('progressLabel').textContent='📝 Проверочная работа';};
+ var btnCur=el('btnSubmitCur');if(btnCur)btnCur.onclick=function(){if(CUR.some(function(q,i){return curAns[i]===undefined;})){msg('msgCur','Ответьте на все вопросы.','error');return;}msg('msgCur','✅ Правильных ответов: '+count(CUR,curAns)+' из '+CUR.length+'.','success');el('reflection').classList.remove('hidden');el('reflection').scrollIntoView({behavior:'smooth'});el('progressLabel').textContent='💭 Рефлексия';};
+ var btnFin=el('btnFinish');if(btnFin)btnFin.onclick=function(){if(!student){alert('Данные не сохранены.');return;}if(sending)return;sending=true;var data={sheet:SHEET_NAME,sn:student.sn,nm:student.nm,cl:student.cl,hw:count(HW,hwAns),hwT:HW.length,cur:count(CUR,curAns),curT:CUR.length,r1:el('r1').value.trim(),r2:el('r2').value.trim(),r3:el('r3').value.trim(),r4:el('r4').value.trim(),dt:new Date().toLocaleString('ru-RU')};btnFin.disabled=true;msg('msgFinish','⏳ Отправляем результаты...','success');sendToServer(data,function(res){sending=false;if(res.ok){msg('msgFinish','✅ Результаты отправлены учителю. Спасибо за работу!','success');}else{btnFin.disabled=false;msg('msgFinish','Не удалось подтвердить отправку результатов. Проверьте подключение и попробуйте ещё раз. Причина: '+(res.reason||('HTTP '+(res.status||'ошибка'))),'error');}});};
+ var btnRefresh=el('btnRefresh');if(btnRefresh)btnRefresh.onclick=refreshResults;
+ var btnExport=el('btnExport');if(btnExport)btnExport.onclick=exportExcel;
+ // Панель учителя оставлена в исходном виде; авторизация требует пароль и серверную проверку.
+ var btnAdmin=el('btnAdmin');if(btnAdmin)btnAdmin.onclick=function(){msg('msgAdmin','Для включения панели результатов нужна настройка пароля учителя в Apps Script.','error');};
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+</script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок биологии: Видоизменения корней</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Roboto, sans-serif; background: #f0f7ea; color: #1e3a2e; line-height: 1.6; padding: 1rem; }
+.app { max-width: 1000px; margin: 0 auto; background: white; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,40,0,0.08); padding: 2rem 1.5rem; }
+h1 { font-size: 2rem; color: #1e4620; border-left: 8px solid #4caf50; padding-left: 1.2rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.4rem; color: #2e5e2e; margin: 1.5rem 0 1rem; border-bottom: 2px dashed #b8d9b0; padding-bottom: 0.3rem; }
+h3 { font-size: 1.15rem; margin: 1rem 0 0.5rem; color: #1e4a1e; }
+.sub { color: #3d5e3d; margin-bottom: 1.5rem; }
+.card { background: #f9fff7; border-radius: 24px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid #d4e8cc; }
+.btn { background: #2e7d32; color: white; border: none; padding: 0.8rem 2rem; border-radius: 60px; font-size: 1rem; font-weight: 600; cursor: pointer; margin: 0.5rem 0.5rem 0.5rem 0; }
+.btn:hover { background: #1b5e20; }
+.btn:disabled { background: #a5c9a5; cursor: not-allowed; }
+.btn-outline { background: transparent; border: 2px solid #2e7d32; color: #2e7d32; }
+.btn-small { padding: 0.4rem 1.2rem; font-size: 0.9rem; }
+input { padding: 0.8rem 1rem; border-radius: 40px; border: 2px solid #c0ddb6; font-size: 1rem; width: 100%; max-width: 400px; margin: 0.3rem 0 1rem; }
+label { font-weight: 500; display: block; margin-top: 0.5rem; }
+.test-q { background: #f5faf2; border-radius: 20px; padding: 1rem 1.2rem; margin-bottom: 1rem; border-left: 6px solid #8bc34a; }
+.test-q p { font-weight: 600; margin-bottom: 0.6rem; }
+.opt { display: flex; align-items: center; gap: 0.6rem; margin: 0.4rem 0; cursor: pointer; padding: 0.3rem 0.6rem; border-radius: 40px; }
+.opt:hover { background: #e2f0da; }
+.opt input { width: 18px; height: 18px; max-width: 18px; margin: 0; }
+.hidden { display: none !important; }
+.note { background: #fff3cd; border: 2px solid #ffc107; color: #856404; padding: 1rem 1.2rem; border-radius: 20px; margin: 1rem 0; font-weight: 600; }
+.note::before { content: "📓 "; }
+.success { background: #dff0d8; color: #1e5e1e; padding: 0.8rem 1.2rem; border-radius: 40px; margin: 0.8rem 0; }
+.error { background: #f8d7da; color: #721c24; padding: 0.8rem 1.2rem; border-radius: 40px; margin: 0.8rem 0; }
+.img-box { background: #e3f0db; border-radius: 20px; padding: 1rem; text-align: center; margin: 1rem 0; border: 2px dashed #b0d0a0; }
+.img-box img { max-width: 100%; height: auto; border-radius: 10px; }
+.cap { font-size: 0.85rem; font-style: italic; color: #4a6b4a; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th { background: #c8e6c9; text-align: left; padding: 0.6rem; }
+td { padding: 0.6rem; border-bottom: 1px solid #d4e8cc; vertical-align: top; }
+textarea { width: 100%; padding: 0.7rem; border-radius: 16px; border: 2px solid #c0ddb6; font-family: inherit; min-height: 70px; margin: 0.3rem 0 0.8rem; }
+.row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.res-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem; }
+.res-table th { background: #2e7d32; color: white; padding: 0.5rem; text-align: left; }
+.res-table td { padding: 0.5rem; border-bottom: 1px solid #d4e8cc; }
+.admin-box { margin-top: 1.5rem; border-top: 3px solid #b8d9b0; padding-top: 1.2rem; }
+.progress { background: #e8f5e9; border-radius: 40px; padding: 0.4rem 1rem; font-weight: 600; color: #1e5e1e; display: inline-block; margin-bottom: 1rem; }
+.start-row { display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+.start-row > div { flex: 1; min-width: 280px; }
+</style>
+</head>
+<body>
+<div class="app">
+    <h1>🌿 Видоизменения корней</h1>
+    <div class="sub">Урок биологии · 6 класс</div>
+
+    <div id="step1">
+        <div class="start-row">
+            <div class="card" style="background:#f1f9ed;">
+                <h2 style="border:none; margin-top:0;">👤 Данные ученика</h2>
+                <label>Фамилия</label>
+                <input type="text" id="surname" placeholder="Иванов">
+                <label>Имя</label>
+                <input type="text" id="name" placeholder="Иван">
+                <label>Класс</label>
+                <input type="text" id="classNum" placeholder="6А">
+                <button type="button" class="btn" id="btnSaveStudent">Сохранить и начать</button>
+                <div id="msgStudent"></div>
+            </div>
+
+            <div class="admin-box" style="margin-top:0; border-top:none; padding-top:0;">
+                <h2 style="border:none; margin-top:0;">🔐 Панель учителя</h2>
+                <div class="row">
+                    <input type="password" id="adminPass" placeholder="Пароль" style="width:160px; margin:0;">
+                    <button type="button" class="btn btn-small btn-outline" id="btnAdmin">Войти</button>
+                    <span id="msgAdmin" style="font-size:0.85rem;"></span>
+                </div>
+                <div id="adminResults" class="hidden" style="margin-top:1rem;">
+                    <div class="row" style="justify-content:space-between;">
+                        <strong>📊 Результаты (лист «Видоизменения корней»)</strong>
+                        <button type="button" class="btn-small btn-outline btn" id="btnRefresh">Обновить</button>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table class="res-table">
+                            <thead><tr><th>Фамилия</th><th>Имя</th><th>Класс</th><th>ДЗ</th><th>Текущий</th><th>Рефлексия</th><th>Дата</th></tr></thead>
+                            <tbody id="resBody"></tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn-small btn-outline btn" id="btnExport">📥 Экспорт в Excel</button>
+                    <div id="msgAdminLoad" style="font-size:0.8rem; color:#4a6b4a; margin-top:0.5rem;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="step2" class="hidden">
+        <div class="row" style="justify-content:space-between;">
+            <div class="progress" id="progressLabel">📖 Проверка пройденной темы</div>
+            <span id="studentDisplay" style="font-size:0.9rem; color:#4a6b4a;"></span>
+        </div>
+
+        <div class="card">
+            <h2>📝 Повторение: «Корни и корневые системы»</h2>
+            <div id="hwQuestions"></div>
+            <button type="button" class="btn" id="btnSubmitHW">Проверить и перейти к уроку</button>
+            <div id="msgHW"></div>
+        </div>
+
+        <div id="newMaterial" class="hidden">
+            <div class="card" style="background:#f4faf0;">
+                <h2>🌿 Новый материал: Видоизменения корней</h2>
+                <div class="note">Всё, что находится в этом блоке, нужно записать в рабочую тетрадь: определение, таблицу и примеры.</div>
+
+                <p><strong>Проблемный вопрос:</strong> все ли корни растений выглядят одинаково и выполняют только две привычные функции — закрепление в почве и поглощение воды?</p>
+                <p>Посмотрите на морковь, свёклу, георгин и орхидею. Их корни выглядят совсем по-разному. Значит, корни некоторых растений изменяются, приспосабливаясь к особым условиям жизни и выполняя дополнительные функции.</p>
+
+                <p><strong>Видоизменения корней</strong> — это изменения формы и строения корней, связанные с выполнением дополнительных функций.</p>
+
+                <h3>1. Корнеплоды</h3>
+                <p>Главный корень утолщается и накапливает питательные вещества. <strong>Примеры:</strong> морковь, свёкла, редька.</p>
+                <div class="img-box">
+                    <img src="https://images.openai.com/static-rsc-4/oUn4ck_rjl5E7QJoo2unYbeQDelaMOSjbOTUzh1nyA_6FbfSPSk3EEpO-ranD90n_RjcVKAObYX4sC2JmsZYcN8LEiHjp18I4WUFHS6pCA-Xar29YDyUbKhhvMeNrxhpSMLV_hluxauOtx6LSCPcmiZ9U23MrkLhAQ5FDvV7dnc?purpose=inline" alt="Морковь">
+                    <div class="cap">Морковь — корнеплод</div>
+                </div>
+                <div class="img-box">
+                    <img src="https://images.openai.com/static-rsc-4/Asx2Nkkyq_uVxHo-yWH2ZvZlh5Bht_UIWAwfYRD24hBriK9AZisPnh34aigeGlxGsTzSJnLkb4i3OY5sgbyj94F1d9VCxw1U7OTanmIkU6kADy017-rv4Up4vx5UNpof55edKm3UyGFTV_I4DEmBii_Si31QyvhUt2M-bEd5V4A?purpose=inline" alt="Свёкла">
+                    <div class="cap">Свёкла — корнеплод</div>
+                </div>
+
+                <h3>2. Корневые клубни</h3>
+                <p>Утолщённые боковые или придаточные корни накапливают запасные питательные вещества. <strong>Примеры:</strong> георгин, батат.</p>
+                <div class="img-box">
+                    <img src="https://images.openai.com/static-rsc-4/hRO1nKTmx7kiryl0b4ftWZ1u49BAFt90XXdaNHW9pNe-55mbk9-57pBQIIztxW12-5TiRVAR5tutokxBzAB4rLCsqFwjG7prSkNpFDkUeyDzbV2WYo3AySNhNn5g4vUNr-ccrZSPnbcntK0qsOA3GzTtWfrDgz5rU5RDXagoIjM?purpose=inline" alt="Георгин">
+                    <div class="cap">Георгин — корневые клубни</div>
+                </div>
+
+                <h3>3. Корни-прицепки</h3>
+                <p>Помогают растению прикрепляться к опоре и подниматься вверх. <strong>Пример:</strong> плющ.</p>
+                <div class="img-box">
+                    <img src="https://images.openai.com/static-rsc-4/i7p-yAw4IvDe6Jj0O2Ebcyn9c4_Gs9E-qDrvMLcK5dkpupqoe9PP9YoZ_xWNEKYUYOl8bK4Cldp2aWIG1IZbQ-ulGIPnIWH8IQSnkro2w3j77ivsismJ_k9awzEZca6Qv2z_GWam-xWAi-NP2e3MLlC_zkceV221NJjbT_aMFNk?purpose=inline" alt="Плющ">
+                    <div class="cap">Плющ — корни-прицепки</div>
+                </div>
+
+                <h3>4. Дыхательные корни</h3>
+                <p>Растут вверх над поверхностью заболоченной почвы и помогают получать кислород. <strong>Пример:</strong> мангровые растения.</p>
+                <div class="img-box">
+                    <img src="https://images.openai.com/static-rsc-4/SEMjZThq79qZMp0xXJxXRrfM8GqKa6qvVH5EKpxexq4SJs2yLmeyUogokXiG6Xh2i8MnWtp9zpy-AcO72NIxMYH6IxZ1S9yggQOgNb6MaM_nw9CmN0Winw6-FEf337GMTRTd_V9zxXCCb5ls_WfKv3DZihjgqGmgJA19EePCZbo?purpose=inline" alt="Мангровые растения">
+                    <div class="cap">Мангровые растения — дыхательные корни</div>
+                </div>
+
+                <p style="background:#fff3cd; padding:0.8rem; border-radius:12px;"><strong>Важно:</strong> корнеплод и корневой клубень — не одно и то же. У моркови утолщается главный корень, а у георгина запас питательных веществ накапливается в утолщённых боковых или придаточных корнях.</p>
+
+                <h3>Таблица для тетради</h3>
+                <table>
+                    <tr><th>Видоизменение</th><th>Функция</th><th>Пример</th></tr>
+                    <tr><td>Корнеплод</td><td>Запас питательных веществ</td><td>Морковь, свёкла</td></tr>
+                    <tr><td>Корневые клубни</td><td>Запас питательных веществ</td><td>Георгин, батат</td></tr>
+                    <tr><td>Корни-прицепки</td><td>Прикрепление к опоре</td><td>Плющ</td></tr>
+                    <tr><td>Дыхательные корни</td><td>Получение кислорода</td><td>Мангровые растения</td></tr>
+                </table>
+
+                <p style="margin-top:1rem; background:#e8f5e9; padding:1rem; border-radius:16px;"><strong>Итог:</strong> видоизменения корней — это приспособления растений к условиям окружающей среды. Благодаря изменениям строения корни могут выполнять дополнительные функции: запасать питательные вещества, прикреплять растение к опоре, получать кислород.</p>
+
+                <button type="button" class="btn" id="btnStartTest" style="margin-top:1rem;">Перейти к проверочной работе</button>
+            </div>
+        </div>
+
+        <div id="currentTest" class="hidden">
+            <div class="card">
+                <h2>✅ Проверочная работа: «Видоизменения корней»</h2>
+                <div id="curQuestions"></div>
+                <button type="button" class="btn" id="btnSubmitCur">Завершить проверочную работу</button>
+                <div id="msgCur"></div>
+            </div>
+        </div>
+
+        <div id="reflection" class="hidden">
+            <div class="card" style="background:#f4faf0;">
+                <h2>💭 Рефлексия</h2>
+                <label>1. Что я узнал сегодня на уроке?</label>
+                <textarea id="r1"></textarea>
+                <label>2. Чем корнеплод отличается от корневого клубня?</label>
+                <textarea id="r2"></textarea>
+                <label>3. Какой пример видоизменения корня меня удивил?</label>
+                <textarea id="r3"></textarea>
+                <label>4. Почему видоизменения корней можно считать приспособлением к условиям среды?</label>
+                <textarea id="r4"></textarea>
+                <button type="button" class="btn" id="btnFinish">Завершить урок и отправить результаты</button>
+                <div id="msgFinish"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var API_URL = "https://script.google.com/macros/s/AKfycbzM50e0UslRY4vHj9xJxykTHxJXyDTwcB5DsCm5egGUDr_kgwBcKa4yVzyInWiQ7_wetQ/exec";
+var SHEET_NAME = "Видоизменения корней";
+
+/* ===== ТЕСТ ПО ПРОЙДЕННОЙ ТЕМЕ (правильный — индекс 0) ===== */
+var HW_RAW = [
+    { t: "Какой корень развивается из зародышевого корешка семени?", o: ["Главный", "Боковой", "Придаточный"], c: 0 },
+    { t: "Где образуются придаточные корни?", o: ["На стеблях и листьях", "Только из главного корня", "Только из боковых корней"], c: 0 },
+    { t: "Что такое корневая система?", o: ["Совокупность всех корней растения", "Только главный корень", "Только боковые корни"], c: 0 },
+    { t: "Для какого растения характерна стержневая корневая система?", o: ["Одуванчик", "Пшеница", "Ландыш"], c: 0 },
+    { t: "Для какого растения характерна мочковатая корневая система?", o: ["Пшеница", "Фасоль", "Крапива"], c: 0 },
+    { t: "Какая зона корня защищает клетки от повреждений?", o: ["Корневой чехлик", "Зона деления", "Зона всасывания"], c: 0 },
+    { t: "В какой зоне образуются корневые волоски?", o: ["Зона всасывания", "Зона проведения", "Зона растяжения"], c: 0 },
+    { t: "Что происходит в зоне проведения?", o: ["Передвижение веществ и образование боковых корней", "Активное деление клеток", "Поглощение воды"], c: 0 },
+    { t: "Какая ткань находится в центральном цилиндре корня?", o: ["Проводящая", "Основная", "Покровная"], c: 0 },
+    { t: "У каких растений чаще встречается мочковатая корневая система?", o: ["Однодольных", "Двудольных", "Голосеменных"], c: 0 }
+];
+
+/* ===== ТЕСТ ПО НОВОЙ ТЕМЕ ===== */
+var CUR_RAW = [
+    { t: "Что такое видоизменения корней?", o: ["Изменения формы и строения корней, связанные с дополнительными функциями", "Только утолщение главного корня", "Всегда отмирание корней"], c: 0 },
+    { t: "Какое видоизменение корня характерно для моркови?", o: ["Корнеплод", "Корневой клубень", "Корень-прицепка"], c: 0 },
+    { t: "Какое видоизменение корня характерно для георгина?", o: ["Корневой клубень", "Корнеплод", "Дыхательный корень"], c: 0 },
+    { t: "Какую функцию выполняют корни-прицепки?", o: ["Прикрепление к опоре", "Запас питательных веществ", "Получение кислорода"], c: 0 },
+    { t: "Для какого растения характерны дыхательные корни?", o: ["Мангровые растения", "Морковь", "Плющ"], c: 0 },
+    { t: "Чем корнеплод отличается от корневого клубня?", o: ["У корнеплода утолщается главный корень, у клубня — боковые и придаточные", "Ничем не отличаются", "Корнеплод — это всегда придаточный корень"], c: 0 },
+    { t: "Какие растения имеют корнеплоды?", o: ["Морковь и свёкла", "Георгин и батат", "Плющ и орхидея"], c: 0 },
+    { t: "Почему видоизменения корней считают приспособлением?", o: ["Потому что они позволяют выполнять дополнительные функции", "Потому что все корни одинаковы", "Потому что корни не меняются"], c: 0 },
+    { t: "Что накапливают корнеплоды и корневые клубни?", o: ["Питательные вещества", "Только воду", "Кислород"], c: 0 },
+    { t: "Какое видоизменение помогает растению получать кислород из воздуха?", o: ["Дыхательные корни", "Корнеплод", "Корень-прицепка"], c: 0 }
+];
+
+/* ===== ПЕРЕМЕШИВАНИЕ ===== */
+function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+}
+function mixQuestions(raw) {
+    return raw.map(function(q) {
+        var correctText = q.o[q.c];
+        var shuffled = shuffle(q.o);
+        return { t: q.t, o: shuffled, c: shuffled.indexOf(correctText) };
+    });
+}
+var HW = mixQuestions(HW_RAW);
+var CUR = mixQuestions(CUR_RAW);
+
+var student = null;
+var hwAns = [];
+var curAns = [];
+
+function el(id) { return document.getElementById(id); }
+function msg(id, text, cls) { var e = el(id); if (e) e.innerHTML = '<div class="' + cls + '">' + text + '</div>'; }
+
+function render(containerId, qs, type) {
+    var box = el(containerId);
+    if (!box) return;
+    box.innerHTML = '';
+    qs.forEach(function(q, i) {
+        var d = document.createElement('div');
+        d.className = 'test-q';
+        var p = document.createElement('p');
+        p.textContent = (i+1) + '. ' + q.t;
+        d.appendChild(p);
+        q.o.forEach(function(text, j) {
+            var lab = document.createElement('label');
+            lab.className = 'opt';
+            var r = document.createElement('input');
+            r.type = 'radio';
+            r.name = type + '_' + i;
+            r.value = j;
+            r.onchange = function() {
+                if (type === 'hw') hwAns[i] = j;
+                else curAns[i] = j;
+            };
+            lab.appendChild(r);
+            lab.appendChild(document.createTextNode(text));
+            d.appendChild(lab);
+        });
+        box.appendChild(d);
+    });
+}
+
+function count(qs, ans) {
+    var c = 0;
+    qs.forEach(function(q, i) { if (ans[i] === q.c) c++; });
+    return c;
+}
+
+/* ===== СЕРВЕР ===== */
+function sendToServer(result, cb) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', API_URL, true);
+    xhr.setRequestHeader('Content-Type', 'text/plain;charset=utf-8');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            cb({ ok: xhr.status === 200, reason: 'http_' + xhr.status });
+        }
+    };
+    xhr.send(JSON.stringify(result));
+}
+function loadFromServer(cb) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', API_URL + '?sheet=' + encodeURIComponent(SHEET_NAME), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try { cb(JSON.parse(xhr.responseText)); }
+                catch(e) { cb(null); }
+            } else { cb(null); }
+        }
+    };
+    xhr.send();
+}
+
+/* ===== ТАБЛИЦА ===== */
+function drawResFromRows(rows) {
+    var tb = el('resBody');
+    if (!tb) return;
+    tb.innerHTML = '';
+    var data = rows || [];
+    if (data.length && String(data[0][0]).toLowerCase() === 'фамилия') data = data.slice(1);
+    if (!data.length) { tb.innerHTML = '<tr><td colspan="7">Нет результатов.</td></tr>'; return; }
+    data.forEach(function(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + (r[0]||'') + '</td><td>' + (r[1]||'') + '</td><td>' + (r[2]||'') + '</td>' +
+            '<td>' + (r[3]||'') + '</td><td>' + (r[4]||'') + '</td>' +
+            '<td>' + (r[5] ? String(r[5]).substring(0,15)+'…' : '—') + '</td><td>' + (r[9]||'') + '</td>';
+        tb.appendChild(tr);
+    });
+}
+
+/* ===== ЭКСПОРТ В EXCEL ===== */
+function exportExcel() {
+    function build(rows) {
+        var html = '<html><head><meta charset="UTF-8"></head><body><table border="1" cellspacing="0" cellpadding="4">';
+        rows.forEach(function(row, ri) {
+            html += '<tr>';
+            row.forEach(function(cell) {
+                var tag = ri === 0 ? 'th' : 'td';
+                var val = (cell === undefined || cell === null) ? '' : String(cell)
+                    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                html += '<' + tag + '>' + val + '</' + tag + '>';
+            });
+            html += '</tr>';
+        });
+        html += '</table></body></html>';
+        var blob = new Blob(['\ufeff' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'Видоизменения_корней_' + new Date().toISOString().slice(0,10) + '.xls';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    msg('msgAdminLoad', 'Готовим Excel-файл...');
+    loadFromServer(function(rows) {
+        var header = ['Фамилия','Имя','Класс','ДЗ','Текущий','Рефлексия 1','Рефлексия 2','Рефлексия 3','Рефлексия 4','Дата'];
+        var data = (rows && rows.length) ? rows : [header];
+        if (data.length && String(data[0][0]).toLowerCase() !== 'фамилия') data = [header].concat(data);
+        build(data);
+        msg('msgAdminLoad', 'Excel-файл сформирован.');
+    });
+}
+
+/* ===== ИНИЦИАЛИЗАЦИЯ ===== */
+function init() {
+    render('hwQuestions', HW, 'hw');
+    render('curQuestions', CUR, 'cur');
+
+    var btn = el('btnSaveStudent');
+    if (btn) {
+        btn.onclick = function() {
+            var sn = el('surname').value.trim();
+            var nm = el('name').value.trim();
+            var cl = el('classNum').value.trim();
+            if (!sn || !nm || !cl) {
+                msg('msgStudent', 'Заполните все поля: фамилия, имя, класс.', 'error');
+                return;
+            }
+            student = { sn: sn, nm: nm, cl: cl };
+            el('studentDisplay').textContent = sn + ' ' + nm + ', ' + cl + ' класс';
+            el('step1').classList.add('hidden');
+            el('step2').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        };
+    }
+
+    var btnHW = el('btnSubmitHW');
+    if (btnHW) {
+        btnHW.onclick = function() {
+            var un = HW.some(function(_, i) { return hwAns[i] === undefined; });
+            if (un) { msg('msgHW', 'Ответьте на все вопросы.', 'error'); return; }
+            var c = count(HW, hwAns);
+            msg('msgHW', '✅ Правильно: ' + c + ' из ' + HW.length + '. Переходим к новому материалу.', 'success');
+            el('newMaterial').classList.remove('hidden');
+            el('newMaterial').scrollIntoView({ behavior: 'smooth' });
+            el('progressLabel').textContent = '📖 Новый материал';
+        };
+    }
+
+    var btnStart = el('btnStartTest');
+    if (btnStart) {
+        btnStart.onclick = function() {
+            el('currentTest').classList.remove('hidden');
+            el('currentTest').scrollIntoView({ behavior: 'smooth' });
+            el('progressLabel').textContent = '📝 Проверочная работа';
+        };
+    }
+
+    var btnCur = el('btnSubmitCur');
+    if (btnCur) {
+        btnCur.onclick = function() {
+            var un = CUR.some(function(_, i) { return curAns[i] === undefined; });
+            if (un) { msg('msgCur', 'Ответьте на все вопросы.', 'error'); return; }
+            var c = count(CUR, curAns);
+            msg('msgCur', '✅ Правильных ответов: ' + c + ' из ' + CUR.length + '.', 'success');
+            el('reflection').classList.remove('hidden');
+            el('reflection').scrollIntoView({ behavior: 'smooth' });
+            el('progressLabel').textContent = '💭 Рефлексия';
+        };
+    }
+
+    var btnFin = el('btnFinish');
+    if (btnFin) {
+        btnFin.onclick = function() {
+            if (!student) { alert('Данные не сохранены.'); return; }
+            var result = {
+                sheet: SHEET_NAME,
+                sn: student.sn,
+                nm: student.nm,
+                cl: student.cl,
+                hw: count(HW, hwAns),
+                hwT: HW.length,
+                cur: count(CUR, curAns),
+                curT: CUR.length,
+                r1: el('r1').value.trim(),
+                r2: el('r2').value.trim(),
+                r3: el('r3').value.trim(),
+                r4: el('r4').value.trim(),
+                dt: new Date().toLocaleString('ru-RU')
+            };
+            btnFin.disabled = true;
+            msg('msgFinish', '⏳ Отправляем результаты...', 'success');
+            sendToServer(result, function(res) {
+                if (res.ok) {
+                    msg('msgFinish', '✅ Результаты отправлены учи

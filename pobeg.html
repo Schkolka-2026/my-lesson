@@ -92,5 +92,38 @@ $('toTest')?.addEventListener('click',()=>{});
 const nextTest=document.createElement('button');nextTest.className='btn';nextTest.textContent='Перейти к проверочной работе';nextTest.onclick=()=>{if(activityScores.some(x=>x===null)){showMsg('orderMsg','Сначала выполни все пять интерактивных заданий.','bad');return;}testRendered=renderQuestions('testQs',TEST,'ts');$('stage').textContent='✅ Проверочная работа';reveal('test');};$('material').appendChild(nextTest);
 $('submitTest').onclick=()=>{const r=scoreQuestions(testRendered,'ts');if(!r.complete){showMsg('testMsg','Ответь на все вопросы и заполни задание на соответствие.','bad');return;}testScore=r.score;showMsg('testMsg','Результат: '+r.score+' из '+r.total+'. Переходи к рефлексии.');$('stage').textContent='💭 Рефлексия';reveal('reflection');};
 document.addEventListener('visibilitychange',()=>{if(startedAt&&!finished&&document.visibilityState==='hidden')switches++;});
-$('finish').onclick=()=>{if(testScore===null||reviewScore===null||activityScores.some(x=>x===null)){showMsg('finishMsg','Сначала заверши все задания урока.','bad');return;}if(sending||finished)return;sending=true;$('finish').disabled=true;const minutes=Math.max(1,Math.round((Date.now()-startedAt)/60000));const data={sheet:SHEET_NAME,sn:student.sn,nm:student.nm,cl:student.cl,hw:reviewScore,hwT:REVIEW.length,cur:testScore,curT:12,r1:$('r1').value.trim(),r2:$('r2').value.trim(),r3:$('r3').value.trim(),r4:$('r4').value.trim(),dt:new Date().toLocaleString('ru-RU'),interactives:activityScores.map((v,i)=>(i+1)+':'+(v?'верно':'ошибка')).join('; '),switches:switches,minutes:minutes,status:'Завершён'};showMsg('finishMsg','Отправляем результаты…','info');fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)}).then(r=>r.text().then(t=>({ok:r.ok,text:t}))).then(res=>{if(!res.ok)throw new Error('HTTP '+res.status);finished=true;showMsg('finishMsg','Урок завершён! Результаты отправлены. Спасибо за работу.');$('stage').textContent='🏁 Урок завершён';}).catch(err=>{showMsg('finishMsg','Не удалось подтвердить отправку. Проверь интернет и попробуй ещё раз. ('+err.message+')','bad');$('finish').disabled=false;sending=false;});};
+$('finish').onclick=()=>{if(testScore===null||reviewScore===null||activityScores.some(x=>x===null)){showMsg('finishMsg','Сначала заверши все задания урока.','bad');return;}if(sending||finished)return;sending=true;$('finish').disabled=true;const minutes=Math.max(1,Math.round((Date.now()-startedAt)/60000));const data={sheet:SHEET_NAME,sn:student.sn,nm:student.nm,cl:student.cl,hw:reviewScore,hwT:REVIEW.length,cur:testScore,curT:12,r1:$('r1').value.trim(),r2:$('r2').value.trim(),r3:$('r3').value.trim(),r4:$('r4').value.trim(),dt:new Date().toLocaleString('ru-RU'),interactives:activityScores.map((v,i)=>(i+1)+':'+(v?'верно':'ошибка')).join('; '),switches:switches,minutes:minutes,status:'Завершён'};showMsg('finishMsg','Отправляем результаты…','info');
+fetch(API_URL,{
+  method:'POST',
+  headers:{'Content-Type':'text/plain;charset=utf-8'},
+  body:JSON.stringify(data)
+})
+.then(r=>r.text())
+.then(text=>{
+  var res;
+
+  try {
+    res = JSON.parse(text);
+  } catch(e) {
+    throw new Error('Сервер вернул некорректный ответ: ' + text);
+  }
+
+  if (!res.ok) {
+    throw new Error(res.error || 'Сервер не подтвердил запись результатов');
+  }
+
+  finished=true;
+  showMsg('finishMsg','Урок завершён! Результаты отправлены. Спасибо за работу.');
+  $('stage').textContent='🏁 Урок завершён';
+})
+.catch(err=>{
+  showMsg(
+    'finishMsg',
+    'Не удалось подтвердить отправку. Проверь интернет и попробуй ещё раз. ('+err.message+')',
+    'bad'
+  );
+  $('finish').disabled=false;
+  sending=false;
+});
+','bad');$('finish').disabled=false;sending=false;});};
 </script></body></html>

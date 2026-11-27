@@ -1,45 +1,303 @@
+
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Побег. Развитие побега из почки — биология, 6 класс</title>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Побег. Развитие побега из почки — биология, 6 класс</title>
 <style>
-*{box-sizing:border-box}body{margin:0;padding:16px;background:#f0f7ea;color:#1e3a2e;font:16px/1.58 "Segoe UI",Arial,sans-serif}.app{max-width:1000px;margin:auto;background:#fff;border-radius:28px;padding:clamp(15px,3vw,30px);box-shadow:0 15px 40px #153a2012}h1{font-size:clamp(25px,4vw,35px);color:#1e4620;border-left:8px solid #4caf50;padding-left:15px;margin:0}h2{font-size:22px;color:#2e5e2e;margin:0 0 14px;border-bottom:2px dashed #b8d9b0;padding-bottom:8px}h3{font-size:18px;color:#1e4a1e;margin:18px 0 8px}.sub{color:#58705b;margin:7px 0 20px}.card{background:#f9fff7;border:1px solid #d4e8cc;border-radius:22px;padding:clamp(14px,2.5vw,22px);margin:17px 0}.soft{background:#f1f9ed}.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}.row>div{flex:1;min-width:260px}.btn{background:#2e7d32;color:#fff;border:0;padding:11px 20px;border-radius:40px;font-size:15px;font-weight:650;cursor:pointer;margin:8px 7px 0 0}.btn:hover{background:#1b5e20}.btn.alt{background:#fff;color:#2e7d32;border:2px solid #2e7d32}.btn:disabled{opacity:.55;cursor:not-allowed}label{display:block;font-weight:600;margin:9px 0 4px}input[type=text],input[type=password],select,textarea{width:100%;max-width:440px;padding:11px 13px;border:2px solid #c0ddb6;border-radius:13px;font:inherit;background:#fff;color:#1e3a2e}textarea{max-width:none;min-height:68px}.hidden{display:none!important}.note{background:#fff2b8;border:2px solid #e7c85a;border-left:7px solid #e0b52e;color:#55430d;padding:13px 16px;border-radius:14px;margin:14px 0}.note strong{display:block;margin-bottom:4px}.progress{display:inline-block;background:#e8f5e9;color:#1e5e1e;border-radius:30px;padding:7px 13px;font-weight:700}.q{background:#f5faf2;border-left:6px solid #8bc34a;border-radius:15px;padding:14px;margin:13px 0}.q p{font-weight:650;margin:0 0 9px}.option{display:flex;align-items:flex-start;gap:9px;padding:6px 8px;border-radius:9px;cursor:pointer}.option:hover{background:#e2f0da}.option input{margin-top:5px}.diagram{background:#f5faf2;border:1px dashed #b5d4b0;border-radius:16px;padding:12px;text-align:center;margin:14px 0}.diagram img{max-width:100%;max-height:370px;object-fit:contain;border-radius:8px}.diagram .cap{font-size:13px;color:#526c54;margin-top:5px}.leaf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.leaf-card{background:#f5faf2;border:1px solid #d4e8cc;border-radius:15px;padding:10px;text-align:center}.leaf-card svg{width:100%;height:auto;max-height:150px}.leaf-card b{display:block;color:#245b31}.feedback{padding:10px 13px;border-radius:12px;margin-top:10px}.good{background:#dff0d8;color:#1e5e1e}.bad{background:#f8d7da;color:#721c24}.info{background:#eaf2fb;color:#284e70}.admin-box{border-top:3px solid #b8d9b0;padding-top:14px}.res-wrap{overflow-x:auto;margin-top:10px}.res-table{border-collapse:collapse;width:100%;font-size:13px;min-width:1050px}.res-table th{background:#2e7d32;color:#fff;padding:8px;text-align:left;white-space:nowrap}.res-table td{padding:8px;border-bottom:1px solid #d4e8cc;vertical-align:top}.small{font-size:13px;color:#5b725e}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.step{background:#f2f8f0;border-radius:14px;padding:12px;text-align:center}.step b{display:block;color:#245b31;margin-bottom:5px}@media(max-width:650px){body{padding:6px}.app{border-radius:16px;padding:13px}.card{padding:13px}.leaf-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}}
-</style></head><body><main class="app">
-<h1>🌿 Побег. Развитие побега из почки</h1><div class="sub">Урок биологии · 6 класс</div>
-<section id="start" class="card"><div class="row"><div class="soft card" style="margin:0"><h2>👤 Данные ученика</h2><label for="surname">Фамилия</label><input id="surname" type="text" placeholder="Иванов"><label for="studentName">Имя</label><input id="studentName" type="text" placeholder="Иван"><label for="className">Класс</label><input id="className" type="text" placeholder="6А"><button class="btn" id="startBtn">Сохранить и начать</button><div id="startMsg"></div></div>
-<div class="admin-box"><h2>🔐 Панель учителя</h2><div class="row"><div style="min-width:170px;flex:0 1 220px"><input id="adminPass" type="password" placeholder="Пароль учителя"></div><div style="min-width:100px;flex:0 1 auto"><button class="btn alt" id="adminBtn">Войти</button></div><span id="adminMsg" class="small"></span></div><div id="adminResults" class="hidden"><div class="row" style="align-items:center;justify-content:space-between"><b>📊 Результаты по теме «Побег»</b><button class="btn alt" id="refreshBtn">Обновить с сервера</button></div><div class="res-wrap"><table class="res-table"><thead><tr><th>Фамилия</th><th>Имя</th><th>Класс</th><th>Повторение</th><th>Проверочная</th><th>Рефлексия 1</th><th>Рефлексия 2</th><th>Рефлексия 3</th><th>Рефлексия 4</th><th>Дата</th><th>Интерактивы</th><th>Переключения</th><th>Время, мин</th><th>Статус</th></tr></thead><tbody id="resBody"></tbody></table></div><button class="btn alt" id="exportBtn">📥 Экспорт в Excel</button><div id="adminLoadMsg" class="small"></div></div></div></div></section>
-<section id="lesson" class="hidden"><div class="row" style="align-items:center;justify-content:space-between"><span class="progress" id="stage">📘 Повторение</span><span id="studentLabel" class="small"></span></div>
-<section class="card" id="review"><h2>📝 Повторение: «Видоизменения корней»</h2><div id="reviewQs"></div><button class="btn" id="reviewBtn">Проверить и перейти к новой теме</button><div id="reviewMsg"></div></section>
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:#f0f7ea;color:#1e3a2e;font:16px/1.58 "Segoe UI",Arial,sans-serif}
+.app{max-width:1000px;margin:auto;background:#fff;border-radius:28px;padding:clamp(15px,3vw,30px);box-shadow:0 15px 40px #153a2012}
+h1{font-size:clamp(25px,4vw,35px);color:#1e4620;border-left:8px solid #4caf50;padding-left:15px;margin:0}
+h2{font-size:22px;color:#2e5e2e;margin:0 0 14px;border-bottom:2px dashed #b8d9b0;padding-bottom:8px}
+h3{font-size:18px;color:#1e4a1e;margin:18px 0 8px}
+.sub{color:#58705b;margin:7px 0 20px}
+.card{background:#f9fff7;border:1px solid #d4e8cc;border-radius:22px;padding:clamp(14px,2.5vw,22px);margin:17px 0}
+.soft{background:#f1f9ed}
+.row{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.row>div{flex:1;min-width:260px}
+.btn{background:#2e7d32;color:#fff;border:0;padding:11px 20px;border-radius:40px;font-size:15px;font-weight:650;cursor:pointer;margin:8px 7px 0 0}
+.btn:hover{background:#1b5e20}
+.btn.alt{background:#fff;color:#2e7d32;border:2px solid #2e7d32}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+label{display:block;font-weight:600;margin:9px 0 4px}
+input[type=text],input[type=password],select,textarea{width:100%;max-width:440px;padding:11px 13px;border:2px solid #c0ddb6;border-radius:13px;font:inherit;background:#fff;color:#1e3a2e}
+textarea{max-width:none;min-height:68px}
+.hidden{display:none!important}
+.note{background:#fff2b8;border:2px solid #e7c85a;border-left:7px solid #e0b52e;color:#55430d;padding:13px 16px;border-radius:14px;margin:14px 0}
+.note strong{display:block;margin-bottom:4px}
+.progress{display:inline-block;background:#e8f5e9;color:#1e5e1e;border-radius:30px;padding:7px 13px;font-weight:700}
+.q{background:#f5faf2;border-left:6px solid #8bc34a;border-radius:15px;padding:14px;margin:13px 0}
+.q p{font-weight:650;margin:0 0 9px}
+.option{display:flex;align-items:flex-start;gap:9px;padding:6px 8px;border-radius:9px;cursor:pointer}
+.option:hover{background:#e2f0da}
+.option input{margin-top:5px}
+.diagram{background:#f5faf2;border:1px dashed #b5d4b0;border-radius:16px;padding:12px;text-align:center;margin:14px 0}
+.diagram img{max-width:100%;max-height:370px;object-fit:contain;border-radius:8px}
+.diagram .cap{font-size:13px;color:#526c54;margin-top:5px}
+.leaf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.leaf-card{background:#f5faf2;border:1px solid #d4e8cc;border-radius:15px;padding:10px;text-align:center}
+.leaf-card svg{width:100%;height:auto;max-height:150px}
+.leaf-card b{display:block;color:#245b31}
+.feedback{padding:10px 13px;border-radius:12px;margin-top:10px}
+.good{background:#dff0d8;color:#1e5e1e}
+.bad{background:#f8d7da;color:#721c24}
+.info{background:#eaf2fb;color:#284e70}
+.admin-box{border-top:3px solid #b8d9b0;padding-top:14px}
+.res-wrap{overflow-x:auto;margin-top:10px}
+.res-table{border-collapse:collapse;width:100%;font-size:13px;min-width:1050px}
+.res-table th{background:#2e7d32;color:#fff;padding:8px;text-align:left;white-space:nowrap}
+.res-table td{padding:8px;border-bottom:1px solid #d4e8cc;vertical-align:top}
+.small{font-size:13px;color:#5b725e}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.step{background:#f2f8f0;border-radius:14px;padding:12px;text-align:center}
+.step b{display:block;color:#245b31;margin-bottom:5px}
+@media(max-width:650px){
+body{padding:6px}
+.app{border-radius:16px;padding:13px}
+.card{padding:13px}
+.leaf-grid{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<main class="app">
+<h1>🌿 Побег. Развитие побега из почки</h1>
+<div class="sub">Урок биологии · 6 класс</div>
+
+<section id="start" class="card">
+<div class="row">
+<div class="soft card" style="margin:0">
+<h2>👤 Данные ученика</h2>
+<label for="surname">Фамилия</label>
+<input id="surname" type="text" placeholder="Иванов">
+<label for="studentName">Имя</label>
+<input id="studentName" type="text" placeholder="Иван">
+<label for="className">Класс</label>
+<input id="className" type="text" placeholder="6А">
+<button class="btn" id="startBtn">Сохранить и начать</button>
+<div id="startMsg"></div>
+</div>
+
+<div class="admin-box">
+<h2>🔐 Панель учителя</h2>
+<div class="row">
+<div style="min-width:170px;flex:0 1 220px">
+<input id="adminPass" type="password" placeholder="Пароль учителя">
+</div>
+<div style="min-width:100px;flex:0 1 auto">
+<button class="btn alt" id="adminBtn">Войти</button>
+</div>
+<span id="adminMsg" class="small"></span>
+</div>
+
+<div id="adminResults" class="hidden">
+<div class="row" style="align-items:center;justify-content:space-between">
+<b>📊 Результаты по теме «Побег»</b>
+<button class="btn alt" id="refreshBtn">Обновить с сервера</button>
+</div>
+<div class="res-wrap">
+<table class="res-table">
+<thead>
+<tr>
+<th>Фамилия</th><th>Имя</th><th>Класс</th><th>Повторение</th><th>Проверочная</th>
+<th>Рефлексия 1</th><th>Рефлексия 2</th><th>Рефлексия 3</th><th>Рефлексия 4</th>
+<th>Дата</th><th>Интерактивы</th><th>Переключения</th><th>Время, мин</th><th>Статус</th>
+</tr>
+</thead>
+<tbody id="resBody"></tbody>
+</table>
+</div>
+<button class="btn alt" id="exportBtn">📥 Экспорт в Excel</button>
+<div id="adminLoadMsg" class="small"></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="lesson" class="hidden">
+<div class="row" style="align-items:center;justify-content:space-between">
+<span class="progress" id="stage">📘 Повторение</span>
+<span id="studentLabel" class="small"></span>
+</div>
+
+<section class="card" id="review">
+<h2>📝 Повторение: «Видоизменения корней»</h2>
+<div id="reviewQs"></div>
+<button class="btn" id="reviewBtn">Проверить и перейти к новой теме</button>
+<div id="reviewMsg"></div>
+</section>
+
 <section id="material" class="hidden">
-<div class="card soft"><h2>1. Побег и его элементы</h2><p>Вспомните, когда мы изучали строение семени, то говорили, что внутри зародыша кроме семядоли, зародышевого корешка есть зародышевый стебелёк и почечка. Как вы думаете, что из них развивается?</p><div class="q" id="embryoQuestion"><p>Что развивается из зародышевого стебелька и почечки?</p>
+<div class="card soft">
+<h2>1. Побег и его элементы</h2>
+<p>Вспомните, когда мы изучали строение семени, то говорили, что внутри зародыша кроме семядоли, зародышевого корешка есть зародышевый стебелёк и почечка. Как вы думаете, что из них развивается?</p>
+<div class="q" id="embryoQuestion">
+<p>Что развивается из зародышевого стебелька и почечки?</p>
 <label class="option"><input type="radio" name="embryoAnswer" value="leaf"> Лист</label>
 <label class="option"><input type="radio" name="embryoAnswer" value="stem"> Стебель</label>
 <label class="option"><input type="radio" name="embryoAnswer" value="shoot"> Побег</label>
-<button class="btn alt" id="checkEmbryo">Проверить</button><div id="embryoMsg"></div>
-<div id="embryoImage" class="diagram hidden"><img src="https://fs.znanio.ru/d5af0e/22/a0/9d72f0caaaa62071c59d5b4196698f8137.jpg" alt="Строение побега"></div></div></div>
+<button class="btn alt" id="checkEmbryo">Проверить</button>
+<div id="embryoMsg"></div>
+<div id="embryoImage" class="diagram hidden">
+<img src="https://fs.znanio.ru/d5af0e/22/a0/9d72f0caaaa62071c59d5b4196698f8137.jpg" alt="Строение побега">
+</div>
+</div>
+</div>
+
 <div class="note"><strong>📓 Запиши в рабочую тетрадь</strong>Тема урока: «Побег. Развитие побега из почки».<br><br><b>Побег</b> — надземный вегетативный орган растения, состоящий из стебля, листьев и почек.<br><br>Зарисуй побег и подпиши его основные элементы: стебель, листья, почки.</div>
-<h3>Узел, междоузлие и пазуха листа</h3><div class="diagram"><img src="https://i.yaklass.by/res/7c96d2d5-1989-4f05-bbfd-25767f414a62/Branchw637w540.png" alt="Узел, междоузлие и пазуха листа"></div>
+
+<h3>Узел, междоузлие и пазуха листа</h3>
+<div class="diagram">
+<img src="https://i.yaklass.by/res/7c96d2d5-1989-4f05-bbfd-25767f414a62/Branchw637w540.png" alt="Узел, междоузлие и пазуха листа">
+</div>
+
 <div class="note"><strong>📓 Запиши в рабочую тетрадь</strong><b>Узел</b> — место прикрепления листа к стеблю.<br><b>Междоузлие</b> — участок стебля между двумя соседними узлами.<br><b>Пазуха листа</b> — угол между листом и стеблем.</div>
-<div class="q"><p>Интерактив 2. «Собери побег»</p><p>Выбери все части, которые входят в состав побега.</p><div id="partsChoices"></div><button class="btn alt" id="checkParts">Проверить</button><div id="partsMsg"></div></div></div>
-<div class="card soft"><h2>2. Листорасположение</h2><p>Листья на стебле могут располагаться по-разному. Рассмотри три схемы.</p>
+
+<div class="q">
+<p>Интерактив 2. «Собери побег»</p>
+<p>Выбери все части, которые входят в состав побега.</p>
+<div id="partsChoices"></div>
+<button class="btn alt" id="checkParts">Проверить</button>
+<div id="partsMsg"></div>
+</div>
+</div>
+
+<div class="card soft">
+<h2>2. Листорасположение</h2>
+<p>Листья на стебле могут располагаться по-разному. Рассмотри три схемы.</p>
+
 <div class="leaf-grid">
-<div class="leaf-card"><svg viewBox="0 0 150 145" aria-label="Очередное листорасположение"><path d="M75 130V12" stroke="#795438" stroke-width="7" stroke-linecap="round"/><g fill="#83b96d" stroke="#397b45" stroke-width="2"><path d="M75 105Q34 65 10 80Q27 119 75 105"/><path d="M75 75Q110 35 140 48Q120 88 75 75"/><path d="M75 45Q42 15 20 28Q37 58 75 45"/></g></svg><b>Очередное</b><span class="small">По одному листу в узле</span></div>
-<div class="leaf-card"><svg viewBox="0 0 150 145" aria-label="Супротивное листорасположение"><path d="M75 130V12" stroke="#795438" stroke-width="7" stroke-linecap="round"/><g fill="#83b96d" stroke="#397b45" stroke-width="2"><path d="M75 105Q34 65 10 80Q27 119 75 105"/><path d="M75 105Q116 65 140 80Q123 119 75 105"/><path d="M75 55Q34 15 10 30Q27 69 75 55"/><path d="M75 55Q116 15 140 30Q123 69 75 55"/></g></svg><b>Супротивное</b><span class="small">По два листа напротив друг друга</span></div>
-<div class="leaf-card"><svg viewBox="0 0 150 145" aria-label="Мутовчатое листорасположение"><path d="M75 130V12" stroke="#795438" stroke-width="7" stroke-linecap="round"/><g fill="#83b96d" stroke="#397b45" stroke-width="2"><path d="M75 90Q28 58 12 75Q29 104 75 90"/><path d="M75 90Q122 58 138 75Q121 104 75 90"/><path d="M75 90Q57 42 75 25Q94 48 75 90"/><path d="M75 38Q35 7 20 22Q36 51 75 38"/><path d="M75 38Q115 7 130 22Q114 51 75 38"/><path d="M75 38Q58 0 75 0Q93 8 75 38"/></g></svg><b>Мутовчатое</b><span class="small">Три и более листа в узле</span></div></div>
+<div class="leaf-card">
+<svg viewBox="0 0 150 145" aria-label="Очередное листорасположение">
+<path d="M75 130V12" stroke="#795438" stroke-width="7" stroke-linecap="round"/>
+<g fill="#83b96d" stroke="#397b45" stroke-width="2">
+<path d="M75 105Q34 65 10 80Q27 119 75 105"/>
+<path d="M75 75Q110 35 140 48Q120 88 75 75"/>
+<path d="M75 45Q42 15 20 28Q37 58 75 45"/>
+</g>
+</svg>
+<b>Очередное</b><span class="small">По одному листу в узле</span>
+</div>
+
+<div class="leaf-card">
+<svg viewBox="0 0 150 145" aria-label="Супротивное листорасположение">
+<path d="M75 130V12" stroke="#795438" stroke-width="7" stroke-linecap="round"/>
+<g fill="#83b96d" stroke="#397b45" stroke-width="2">
+<path d="M75 105Q34 65 10 80Q27 119 75 105"/>
+<path d="M75 105Q116 65 140 80Q123 119 75 105"/>
+<path d="M75 55Q34 15 10 30Q27 69 75 55"/>
+<path d="M75 55Q116 15 140 30Q123 69 75 55"/>
+</g>
+</svg>
+<b>Супротивное</b><span class="small">По два листа напротив друг друга</span>
+</div>
+
+<div class="leaf-card">
+<svg viewBox="0 0 150 145" aria-label="Мутовчатое листорасположение">
+<path d="M75 130V12" stroke="#795438" stroke-width="7" stroke-linecap="round"/>
+<g fill="#83b96d" stroke="#397b45" stroke-width="2">
+<path d="M75 90Q28 58 12 75Q29 104 75 90"/>
+<path d="M75 90Q122 58 138 75Q121 104 75 90"/>
+<path d="M75 90Q57 42 75 25Q94 48 75 90"/>
+<path d="M75 38Q35 7 20 22Q36 51 75 38"/>
+<path d="M75 38Q115 7 130 22Q114 51 75 38"/>
+<path d="M75 38Q58 0 75 0Q93 8 75 38"/>
+</g>
+</svg>
+<b>Мутовчатое</b><span class="small">Три и более листа в узле</span>
+</div>
+</div>
+
 <div class="note"><strong>📓 Запиши в рабочую тетрадь</strong>Схемы листорасположения: <b>очередное</b> — один лист в узле; <b>супротивное</b> — два листа напротив друг друга; <b>мутовчатое</b> — три и более листа в одном узле. Зарисуй схемы.</div>
-<div class="q"><p>Интерактив 3. «Определи листорасположение»</p><p>Выбери правильный тип для каждой схемы.</p><label for="leafA">А — один лист в узле</label><select id="leafA"><option value="">Выбери ответ</option><option>Очередное</option><option>Супротивное</option><option>Мутовчатое</option></select><label for="leafB">Б — два листа напротив друг друга</label><select id="leafB"><option value="">Выбери ответ</option><option>Очередное</option><option>Супротивное</option><option>Мутовчатое</option></select><label for="leafC">В — три и более листа в одном узле</label><select id="leafC"><option value="">Выбери ответ</option><option>Очередное</option><option>Супротивное</option><option>Мутовчатое</option></select><button class="btn alt" id="checkLeaves">Проверить</button><div id="leavesMsg"></div></div></div>
-<div class="card soft"><h2>3. Виды почек</h2><p>На побеге можно увидеть верхушечную и боковые почки. Они различаются расположением и ролью в росте растения.</p><div class="diagram"><img src="https://fs.znanio.ru/d5af0e/fc/73/7d9588be0e7a9fef1d33bcc5ee71fd59d3.jpg" alt="Верхушечная и боковые почки"></div><p><b>Верхушечная почка</b> находится на верхушке побега и обеспечивает рост в длину. <b>Боковая почка</b> расположена в пазухе листа; из неё может развиться боковой побег.</p>
-<div class="diagram"><div class="row"><div><img src="https://fsd.multiurok.ru/html/2024/10/30/s_67224c4769557/img13.jpg" alt="Верхушечная и боковая почки"></div></div></div>
+
+<div class="q">
+<p>Интерактив 3. «Определи листорасположение»</p>
+<p>Выбери правильный тип для каждой схемы.</p>
+<label for="leafA">А — один лист в узле</label>
+<select id="leafA"><option value="">Выбери ответ</option><option>Очередное</option><option>Супротивное</option><option>Мутовчатое</option></select>
+<label for="leafB">Б — два листа напротив друг друга</label>
+<select id="leafB"><option value="">Выбери ответ</option><option>Очередное</option><option>Супротивное</option><option>Мутовчатое</option></select>
+<label for="leafC">В — три и более листа в одном узле</label>
+<select id="leafC"><option value="">Выбери ответ</option><option>Очередное</option><option>Супротивное</option><option>Мутовчатое</option></select>
+<button class="btn alt" id="checkLeaves">Проверить</button>
+<div id="leavesMsg"></div>
+</div>
+</div>
+
+<div class="card soft">
+<h2>3. Виды почек</h2>
+<p>На побеге можно увидеть верхушечную и боковые почки. Они различаются расположением и ролью в росте растения.</p>
+<div class="diagram">
+<img src="https://fs.znanio.ru/d5af0e/fc/73/7d9588be0e7a9fef1d33bcc5ee71fd59d3.jpg" alt="Верхушечная и боковые почки">
+</div>
+<p><b>Верхушечная почка</b> находится на верхушке побега и обеспечивает рост в длину. <b>Боковая почка</b> расположена в пазухе листа; из неё может развиться боковой побег.</p>
+<div class="diagram">
+<div class="row"><div><img src="https://fsd.multiurok.ru/html/2024/10/30/s_67224c4769557/img13.jpg" alt="Верхушечная и боковая почки"></div></div>
+</div>
 <div class="note"><strong>📓 Запиши в рабочую тетрадь</strong>Почки бывают <b>вегетативные</b> и <b>генеративные</b>.<br><b>Вегетативная почка</b> — из неё развивается побег с листьями.<br><b>Генеративная почка</b> — из неё развивается цветок или соцветие.</div>
 <p>Внутри вегетативной почки находятся зачаточный стебель и зачаточные листья. Снаружи почку защищают почечные чешуи.</p>
-<div class="q"><p>Интерактив 4. «Что появится из почки?»</p><label for="veg">Вегетативная почка</label><select id="veg"><option value="">Выбери результат</option><option value="shoot">Побег с листьями</option><option value="flower">Цветок или соцветие</option></select><label for="gen">Генеративная почка</label><select id="gen"><option value="">Выбери результат</option><option value="shoot">Побег с листьями</option><option value="flower">Цветок или соцветие</option></select><button class="btn alt" id="checkBuds">Проверить</button><div id="budsMsg"></div></div></div>
-<div class="card soft"><h2>4. Развитие побега из почки</h2><p>Весной почка выходит из состояния покоя. Её чешуи раздвигаются, и начинает расти молодой побег.</p><h3>Стадии развития побега</h3><div class="steps"><div class="step"><b>1. Покой</b>Почка закрыта чешуями.</div><div class="step"><b>2. Набухание</b>Почка увеличивается.</div><div class="step"><b>3. Раскрытие</b>Чешуи раздвигаются.</div><div class="step"><b>4. Рост</b>Появляется молодой побег.</div></div>
-<div class="q"><p>Интерактив 5. «Восстанови последовательность»</p><p>Расставь этапы развития побега из почки в правильном порядке.</p><div id="orderInputs"></div><button class="btn alt" id="checkOrder">Проверить</button><div id="orderMsg"></div></div></div>
+<div class="q">
+<p>Интерактив 4. «Что появится из почки?»</p>
+<label for="veg">Вегетативная почка</label>
+<select id="veg"><option value="">Выбери результат</option><option value="shoot">Побег с листьями</option><option value="flower">Цветок или соцветие</option></select>
+<label for="gen">Генеративная почка</label>
+<select id="gen"><option value="">Выбери результат</option><option value="shoot">Побег с листьями</option><option value="flower">Цветок или соцветие</option></select>
+<button class="btn alt" id="checkBuds">Проверить</button>
+<div id="budsMsg"></div>
+</div>
+</div>
+
+<div class="card soft">
+<h2>4. Развитие побега из почки</h2>
+<p>Весной почка выходит из состояния покоя. Её чешуи раздвигаются, и начинает расти молодой побег.</p>
+<h3>Стадии развития побега</h3>
+<div class="steps">
+<div class="step"><b>1. Покой</b>Почка закрыта чешуями.</div>
+<div class="step"><b>2. Набухание</b>Почка увеличивается.</div>
+<div class="step"><b>3. Раскрытие</b>Чешуи раздвигаются.</div>
+<div class="step"><b>4. Рост</b>Появляется молодой побег.</div>
+</div>
+<div class="q">
+<p>Интерактив 5. «Восстанови последовательность»</p>
+<p>Расставь этапы развития побега из почки в правильном порядке.</p>
+<div id="orderInputs"></div>
+<button class="btn alt" id="checkOrder">Проверить</button>
+<div id="orderMsg"></div>
+</div>
+</div>
 </section>
-<section class="card hidden" id="test"><h2>✅ Проверочная работа</h2><p>Ответь на вопросы по теме. В последнем задании установи соответствие.</p><div id="testQs"></div><button class="btn" id="submitTest">Проверить ответы</button><div id="testMsg"></div></section>
-<section class="card soft hidden" id="reflection"><h2>💭 Рефлексия</h2><label for="r1">1. Что нового я узнал(а) о побеге?</label><textarea id="r1"></textarea><label for="r2">2. Чем отличаются вегетативная и генеративная почки?</label><textarea id="r2"></textarea><label for="r3">3. Какое задание оказалось самым интересным?</label><textarea id="r3"></textarea><label for="r4">4. Что осталось непонятным?</label><textarea id="r4"></textarea><button class="btn" id="finish">Завершить урок и отправить результаты</button><div id="finishMsg"></div></section>
-</section></main>
+
+<section class="card hidden" id="test">
+<h2>✅ Проверочная работа</h2>
+<p>Ответь на вопросы по теме. В последнем задании установи соответствие.</p>
+<div id="testQs"></div>
+<button class="btn" id="submitTest">Проверить ответы</button>
+<div id="testMsg"></div>
+</section>
+
+<section class="card soft hidden" id="reflection">
+<h2>💭 Рефлексия</h2>
+<label for="r1">1. Что нового я узнал(а) о побеге?</label>
+<textarea id="r1"></textarea>
+<label for="r2">2. Чем отличаются вегетативная и генеративная почки?</label>
+<textarea id="r2"></textarea>
+<label for="r3">3. Какое задание оказалось самым интересным?</label>
+<textarea id="r3"></textarea>
+<label for="r4">4. Что осталось непонятным?</label>
+<textarea id="r4"></textarea>
+<button class="btn" id="finish">Завершить урок и отправить результаты</button>
+<div id="finishMsg"></div>
+</section>
+</section>
+</main>
+
 <script>
 const API_URL='https://script.google.com/macros/s/AKfycbzM50e0UslRY4vHj9xJxykTHxJXyDTwcB5DsCm5egGUDr_kgwBcKa4yVzyInWiQ7_wetQ/exec';
 const SHEET_NAME='Побег';
+
 const REVIEW=[
 {t:'Что такое видоизменения корней?',o:['Изменения формы и строения корней, связанные с выполнением дополнительных функций','Только увеличение длины корня','Образование новых листьев'],c:0},
 {t:'Какое видоизменение корня характерно для моркови?',o:['Корнеплод','Корневой клубень','Корень-прицепка'],c:0},
@@ -52,6 +310,7 @@ const REVIEW=[
 {t:'Что накапливают корнеплоды и корневые клубни?',o:['Запасные питательные вещества','Только кислород','Минеральные соли из воздуха'],c:0},
 {t:'Какое видоизменение помогает растению получать кислород из воздуха?',o:['Дыхательные корни','Корнеплод','Корень-прицепка'],c:0}
 ];
+
 const TEST=[
 {t:'Из каких частей состоит побег?',o:['Из стебля, листьев и почек','Из корня и корневых волосков','Только из стебля и цветков'],c:0},
 {t:'Что называют узлом побега?',o:['Место прикрепления листа к стеблю','Участок между двумя корнями','Верхушку стебля'],c:0},
@@ -64,66 +323,360 @@ const TEST=[
 {t:'В какой последовательности развивается побег из почки?',o:['Покой → набухание → раскрытие чешуй → молодой побег','Раскрытие → покой → цветение → набухание','Набухание → плод → корень → покой'],c:0},
 {t:'Установи соответствие между типом листорасположения и его характеристикой.',match:true,items:[['Очередное','По одному листу в узле'],['Супротивное','По два листа напротив друг друга'],['Мутовчатое','Три и более листа в одном узле']]}
 ];
+
 let student=null,reviewScore=null,testScore=null,activityScores=[null,null,null,null,null],switches=0,startedAt=0,finished=false,sending=false;
 const $=id=>document.getElementById(id);
-function showMsg(id,text,kind='good'){ $(id).innerHTML='<div class="feedback '+kind+'">'+text+'</div>'; }
-function reveal(id){$(id).classList.remove('hidden');$(id).scrollIntoView({behavior:'smooth',block:'start'});}
-function shuffled(q){const a=q.o.slice();for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return {...q,o:a,c:a.indexOf(q.o[q.c])};}
-function renderQuestions(id,arr,prefix){const root=$(id);root.innerHTML='';const prepared=arr.map(q=>q.match?q:shuffled(q));prepared.forEach((q,i)=>{const box=document.createElement('div');box.className='q';const p=document.createElement('p');p.textContent=(i+1)+'. '+q.t;box.appendChild(p);if(q.match){q.items.forEach((pair,j)=>{const lab=document.createElement('label');lab.textContent=pair[0];const sel=document.createElement('select');sel.id=prefix+'_'+j;sel.innerHTML='<option value="">Выбери характеристику</option>'+q.items.map(x=>'<option value="'+x[1]+'">'+x[1]+'</option>').join('');box.append(lab,sel);});}else q.o.forEach((v,j)=>{const lab=document.createElement('label');lab.className='option';const inp=document.createElement('input');inp.type='radio';inp.name=prefix+'_'+i;inp.value=j;lab.append(inp,document.createTextNode(v));box.appendChild(lab);});root.appendChild(box);});return prepared;}
+
+function showMsg(id,text,kind='good'){
+  $(id).innerHTML='<div class="feedback '+kind+'">'+text+'</div>';
+}
+
+function reveal(id){
+  $(id).classList.remove('hidden');
+  $(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function shuffled(q){
+  const a=q.o.slice();
+  for(let i=a.length-1;i>0;i--){
+    let j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return {...q,o:a,c:a.indexOf(q.o[q.c])};
+}
+
+function renderQuestions(id,arr,prefix){
+  const root=$(id);
+  root.innerHTML='';
+  const prepared=arr.map(q=>q.match?q:shuffled(q));
+  prepared.forEach((q,i)=>{
+    const box=document.createElement('div');
+    box.className='q';
+    const p=document.createElement('p');
+    p.textContent=(i+1)+'. '+q.t;
+    box.appendChild(p);
+    if(q.match){
+      q.items.forEach((pair,j)=>{
+        const lab=document.createElement('label');
+        lab.textContent=pair[0];
+        const sel=document.createElement('select');
+        sel.id=prefix+'_'+j;
+        sel.innerHTML='<option value="">Выбери характеристику</option>'+q.items.map(x=>'<option value="'+x[1]+'">'+x[1]+'</option>').join('');
+        box.append(lab,sel);
+      });
+    }else{
+      q.o.forEach((v,j)=>{
+        const lab=document.createElement('label');
+        lab.className='option';
+        const inp=document.createElement('input');
+        inp.type='radio';
+        inp.name=prefix+'_'+i;
+        inp.value=j;
+        lab.append(inp,document.createTextNode(v));
+        box.appendChild(lab);
+      });
+    }
+    root.appendChild(box);
+  });
+  return prepared;
+}
+
 let reviewRendered=[],testRendered=[];
-function scoreQuestions(arr,prefix){let score=0,complete=true;arr.forEach((q,i)=>{if(q.match){q.items.forEach((pair,j)=>{const v=$(prefix+'_'+j).value;if(!v)complete=false;else if(v===pair[1])score++;});}else{const chosen=document.querySelector('input[name="'+prefix+'_'+i+'"]:checked');if(!chosen)complete=false;else if(Number(chosen.value)===q.c)score++;}});return {score,total:arr.reduce((n,q)=>n+(q.match?q.items.length:1),0),complete};}
-function loadServer(cb){const x=new XMLHttpRequest();x.open('GET',API_URL+'?sheet='+encodeURIComponent(SHEET_NAME),true);x.timeout=20000;x.onreadystatechange=()=>{if(x.readyState===4){if(x.status>=200&&x.status<300){try{const d=JSON.parse(x.responseText);cb(Array.isArray(d)?d:(d.rows||d.data||[]));}catch(e){cb(null);}}else cb(null);}};x.onerror=()=>cb(null);x.ontimeout=()=>cb(null);x.send();}
-function drawRows(rows){const tb=$('resBody');tb.innerHTML='';let data=rows||[];if(data.length&&String(data[0][0]).toLowerCase()==='фамилия')data=data.slice(1);if(!data.length){tb.innerHTML='<tr><td colspan="14">Пока нет результатов.</td></tr>';return;}data.forEach(r=>{const tr=document.createElement('tr');for(let i=0;i<14;i++){const td=document.createElement('td');td.textContent=r[i]==null?'':String(r[i]);tr.appendChild(td);}tb.appendChild(tr);});}
-function refresh(){showMsg('adminLoadMsg','Загружаем результаты…','info');loadServer(rows=>{if(rows===null){showMsg('adminLoadMsg','Не удалось загрузить данные. Проверьте доступ к таблице и Apps Script.','bad');return;}drawRows(rows);showMsg('adminLoadMsg','Данные обновлены.','good');});}
-function exportExcel(){loadServer(rows=>{if(rows===null){showMsg('adminLoadMsg','Не удалось получить данные для экспорта.','bad');return;}const headers=['Фамилия','Имя','Класс','Повторение','Проверочная','Рефлексия 1','Рефлексия 2','Рефлексия 3','Рефлексия 4','Дата','Интерактивные задания','Количество переключений','Время работы, мин','Статус завершения'];let data=rows.length?rows:[headers];if(data.length&&String(data[0][0]).toLowerCase()!=='фамилия')data=[headers,...data];const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const table='<html><head><meta charset="UTF-8"></head><body><table border="1">'+data.map(r=>'<tr>'+r.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>').join('')+'</table></body></html>';const blob=new Blob(['\ufeff'+table],{type:'application/vnd.ms-excel;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Побег_результаты.xls';a.click();URL.revokeObjectURL(url);showMsg('adminLoadMsg','Файл Excel подготовлен.','good');});}
-$('adminBtn').onclick=()=>{if($('adminPass').value==='12345@'){$('adminResults').classList.remove('hidden');$('adminMsg').textContent='Доступ разрешён';refresh();}else{$('adminMsg').textContent='Неверный пароль';$('adminResults').classList.add('hidden');}};
-$('refreshBtn').onclick=refresh;$('exportBtn').onclick=exportExcel;
-$('startBtn').onclick=()=>{const sn=$('surname').value.trim(),nm=$('studentName').value.trim(),cl=$('className').value.trim();if(!sn||!nm||!cl){showMsg('startMsg','Заполни фамилию, имя и класс.','bad');return;}student={sn,nm,cl};startedAt=Date.now();$('studentLabel').textContent=sn+' '+nm+' · '+cl;$('start').classList.add('hidden');$('lesson').classList.remove('hidden');reviewRendered=renderQuestions('reviewQs',REVIEW,'rv');window.scrollTo({top:0,behavior:'smooth'});};
-$('reviewBtn').onclick=()=>{const r=scoreQuestions(reviewRendered,'rv');if(!r.complete){showMsg('reviewMsg','Ответь на все вопросы, чтобы перейти дальше.','bad');return;}reviewScore=r.score;showMsg('reviewMsg','Верно: '+r.score+' из '+r.total+'. Переходим к новой теме.');$('stage').textContent='🌿 Новый материал';reveal('material');};
+
+function scoreQuestions(arr,prefix){
+  let score=0,complete=true;
+  arr.forEach((q,i)=>{
+    if(q.match){
+      q.items.forEach((pair,j)=>{
+        const v=$(prefix+'_'+j).value;
+        if(!v)complete=false;
+        else if(v===pair[1])score++;
+      });
+    }else{
+      const chosen=document.querySelector('input[name="'+prefix+'_'+i+'"]:checked');
+      if(!chosen)complete=false;
+      else if(Number(chosen.value)===q.c)score++;
+    }
+  });
+  return {
+    score,
+    total:arr.reduce((n,q)=>n+(q.match?q.items.length:1),0),
+    complete
+  };
+}
+
+function loadServer(cb){
+  const x=new XMLHttpRequest();
+  x.open('GET',API_URL+'?sheet='+encodeURIComponent(SHEET_NAME),true);
+  x.timeout=20000;
+  x.onreadystatechange=()=>{
+    if(x.readyState===4){
+      if(x.status>=200&&x.status<300){
+        try{
+          const d=JSON.parse(x.responseText);
+          cb(Array.isArray(d)?d:(d.rows||d.data||[]));
+        }catch(e){
+          cb(null);
+        }
+      }else{
+        cb(null);
+      }
+    }
+  };
+  x.onerror=()=>cb(null);
+  x.ontimeout=()=>cb(null);
+  x.send();
+}
+
+function drawRows(rows){
+  const tb=$('resBody');
+  tb.innerHTML='';
+  let data=rows||[];
+  if(data.length&&String(data[0][0]).toLowerCase()==='фамилия')data=data.slice(1);
+  if(!data.length){
+    tb.innerHTML='<tr><td colspan="14">Пока нет результатов.</td></tr>';
+    return;
+  }
+  data.forEach(r=>{
+    const tr=document.createElement('tr');
+    for(let i=0;i<14;i++){
+      const td=document.createElement('td');
+      td.textContent=r[i]==null?'':String(r[i]);
+      tr.appendChild(td);
+    }
+    tb.appendChild(tr);
+  });
+}
+
+function refresh(){
+  showMsg('adminLoadMsg','Загружаем результаты…','info');
+  loadServer(rows=>{
+    if(rows===null){
+      showMsg('adminLoadMsg','Не удалось загрузить данные. Проверьте доступ к таблице и Apps Script.','bad');
+      return;
+    }
+    drawRows(rows);
+    showMsg('adminLoadMsg','Данные обновлены.','good');
+  });
+}
+
+function exportExcel(){
+  loadServer(rows=>{
+    if(rows===null){
+      showMsg('adminLoadMsg','Не удалось получить данные для экспорта.','bad');
+      return;
+    }
+    const headers=['Фамилия','Имя','Класс','Повторение','Проверочная','Рефлексия 1','Рефлексия 2','Рефлексия 3','Рефлексия 4','Дата','Интерактивные задания','Количество переключений','Время работы, мин','Статус завершения'];
+    let data=rows.length?rows:[headers];
+    if(data.length&&String(data[0][0]).toLowerCase()!=='фамилия')data=[headers,...data];
+    const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const table='<html><head><meta charset="UTF-8"></head><body><table border="1">'+data.map(r=>'<tr>'+r.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>').join('')+'</table></body></html>';
+    const blob=new Blob(['\ufeff'+table],{type:'application/vnd.ms-excel;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='Побег_результаты.xls';
+    a.click();
+    URL.revokeObjectURL(url);
+    showMsg('adminLoadMsg','Файл Excel подготовлен.','good');
+  });
+}
+
+$('adminBtn').onclick=()=>{
+  if($('adminPass').value==='12345@'){
+    $('adminResults').classList.remove('hidden');
+    $('adminMsg').textContent='Доступ разрешён';
+    refresh();
+  }else{
+    $('adminMsg').textContent='Неверный пароль';
+    $('adminResults').classList.add('hidden');
+  }
+};
+
+$('refreshBtn').onclick=refresh;
+$('exportBtn').onclick=exportExcel;
+
+$('startBtn').onclick=()=>{
+  const sn=$('surname').value.trim();
+  const nm=$('studentName').value.trim();
+  const cl=$('className').value.trim();
+
+  if(!sn||!nm||!cl){
+    showMsg('startMsg','Заполни фамилию, имя и класс.','bad');
+    return;
+  }
+
+  student={sn,nm,cl};
+  startedAt=Date.now();
+  $('studentLabel').textContent=sn+' '+nm+' · '+cl;
+  $('start').classList.add('hidden');
+  $('lesson').classList.remove('hidden');
+  reviewRendered=renderQuestions('reviewQs',REVIEW,'rv');
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+
+$('reviewBtn').onclick=()=>{
+  const r=scoreQuestions(reviewRendered,'rv');
+  if(!r.complete){
+    showMsg('reviewMsg','Ответь на все вопросы, чтобы перейти дальше.','bad');
+    return;
+  }
+  reviewScore=r.score;
+  showMsg('reviewMsg','Верно: '+r.score+' из '+r.total+'. Переходим к новой теме.');
+  $('stage').textContent='🌿 Новый материал';
+  reveal('material');
+};
+
 $('partsChoices').innerHTML=['Стебель','Листья','Почки','Корень','Плод'].map(x=>'<label class="option"><input type="checkbox" value="'+x+'">'+x+'</label>').join('');
-$('checkEmbryo').onclick=()=>{const chosen=document.querySelector('input[name="embryoAnswer"]:checked');if(!chosen){showMsg('embryoMsg','Выбери один вариант ответа.','bad');return;}const ok=chosen.value==='shoot';activityScores[0]=ok?1:0;if(ok){$('embryoImage').classList.remove('hidden');showMsg('embryoMsg','Верно! Из зародышевого стебелька и почечки развивается побег.');}else{showMsg('embryoMsg','Попробуй ещё раз. Правильный ответ — побег.','bad');}};
-$('checkParts').onclick=()=>{const vals=[...$('partsChoices').querySelectorAll('input:checked')].map(x=>x.value).sort();const ok=JSON.stringify(vals)===JSON.stringify(['Листья','Почки','Стебель'].sort());activityScores[1]=ok?1:0;showMsg('partsMsg',ok?'Верно! Побег состоит из стебля, листьев и почек.':'Попробуй ещё раз: выбери только три составляющие побега.',ok?'good':'bad');};
-$('checkLeaves').onclick=()=>{const ok=$('leafA').value==='Очередное'&&$('leafB').value==='Супротивное'&&$('leafC').value==='Мутовчатое';activityScores[2]=ok?1:0;showMsg('leavesMsg',ok?'Правильно! Все три типа листорасположения определены верно.':'Проверь количество листьев в каждом узле.',ok?'good':'bad');};
-$('checkBuds').onclick=()=>{const ok=$('veg').value==='shoot'&&$('gen').value==='flower';activityScores[3]=ok?1:0;showMsg('budsMsg',ok?'Верно! Вегетативная почка даёт побег с листьями, генеративная — цветок или соцветие.':'Подумай, какая почка образует побег, а какая — цветок или соцветие.',ok?'good':'bad');};
-const order=['Покой','Набухание','Раскрытие почечных чешуй','Рост молодого побега'];const orderMixed=['Рост молодого побега','Покой','Раскрытие почечных чешуй','Набухание'];$('orderInputs').innerHTML=orderMixed.map((v,i)=>'<label>'+String.fromCharCode(1040+i)+'. <select id="ord'+i+'"><option value="">Выбери этап</option>'+order.map(x=>'<option>'+x+'</option>').join('')+'</select></label>').join('');
-$('checkOrder').onclick=()=>{const vals=[0,1,2,3].map(i=>$('ord'+i).value);const ok=vals.every((v,i)=>v===order[i])&&new Set(vals).size===4;activityScores[4]=ok?1:0;showMsg('orderMsg',ok?'Отлично! Последовательность восстановлена верно.':'Расположи этапы от состояния покоя до появления молодого побега.',ok?'good':'bad');};
+
+$('checkEmbryo').onclick=()=>{
+  const chosen=document.querySelector('input[name="embryoAnswer"]:checked');
+  if(!chosen){
+    showMsg('embryoMsg','Выбери один вариант ответа.','bad');
+    return;
+  }
+  const ok=chosen.value==='shoot';
+  activityScores[0]=ok?1:0;
+  if(ok){
+    $('embryoImage').classList.remove('hidden');
+    showMsg('embryoMsg','Верно! Из зародышевого стебелька и почечки развивается побег.');
+  }else{
+    showMsg('embryoMsg','Попробуй ещё раз. Правильный ответ — побег.','bad');
+  }
+};
+
+$('checkParts').onclick=()=>{
+  const vals=[...$('partsChoices').querySelectorAll('input:checked')].map(x=>x.value).sort();
+  const ok=JSON.stringify(vals)===JSON.stringify(['Листья','Почки','Стебель'].sort());
+  activityScores[1]=ok?1:0;
+  showMsg('partsMsg',ok?'Верно! Побег состоит из стебля, листьев и почек.':'Попробуй ещё раз: выбери только три составляющие побега.',ok?'good':'bad');
+};
+
+$('checkLeaves').onclick=()=>{
+  const ok=$('leafA').value==='Очередное'&&$('leafB').value==='Супротивное'&&$('leafC').value==='Мутовчатое';
+  activityScores[2]=ok?1:0;
+  showMsg('leavesMsg',ok?'Правильно! Все три типа листорасположения определены верно.':'Проверь количество листьев в каждом узле.',ok?'good':'bad');
+};
+
+$('checkBuds').onclick=()=>{
+  const ok=$('veg').value==='shoot'&&$('gen').value==='flower';
+  activityScores[3]=ok?1:0;
+  showMsg('budsMsg',ok?'Верно! Вегетативная почка даёт побег с листьями, генеративная — цветок или соцветие.':'Подумай, какая почка образует побег, а какая — цветок или соцветие.',ok?'good':'bad');
+};
+
+const order=['Покой','Набухание','Раскрытие почечных чешуй','Рост молодого побега'];
+const orderMixed=['Рост молодого побега','Покой','Раскрытие почечных чешуй','Набухание'];
+
+$('orderInputs').innerHTML=orderMixed.map((v,i)=>'<label>'+String.fromCharCode(1040+i)+'. <select id="ord'+i+'"><option value="">Выбери этап</option>'+order.map(x=>'<option>'+x+'</option>').join('')+'</select></label>').join('');
+
+$('checkOrder').onclick=()=>{
+  const vals=[0,1,2,3].map(i=>$('ord'+i).value);
+  const ok=vals.every((v,i)=>v===order[i])&&new Set(vals).size===4;
+  activityScores[4]=ok?1:0;
+  showMsg('orderMsg',ok?'Отлично! Последовательность восстановлена верно.':'Расположи этапы от состояния покоя до появления молодого побега.',ok?'good':'bad');
+};
+
 $('toTest')?.addEventListener('click',()=>{});
-// Проверочная работа открывается после четырёх заданий в конце нового материала.
-const nextTest=document.createElement('button');nextTest.className='btn';nextTest.textContent='Перейти к проверочной работе';nextTest.onclick=()=>{if(activityScores.some(x=>x===null)){showMsg('orderMsg','Сначала выполни все пять интерактивных заданий.','bad');return;}testRendered=renderQuestions('testQs',TEST,'ts');$('stage').textContent='✅ Проверочная работа';reveal('test');};$('material').appendChild(nextTest);
-$('submitTest').onclick=()=>{const r=scoreQuestions(testRendered,'ts');if(!r.complete){showMsg('testMsg','Ответь на все вопросы и заполни задание на соответствие.','bad');return;}testScore=r.score;showMsg('testMsg','Результат: '+r.score+' из '+r.total+'. Переходи к рефлексии.');$('stage').textContent='💭 Рефлексия';reveal('reflection');};
-document.addEventListener('visibilitychange',()=>{if(startedAt&&!finished&&document.visibilityState==='hidden')switches++;});
-$('finish').onclick=()=>{if(testScore===null||reviewScore===null||activityScores.some(x=>x===null)){showMsg('finishMsg','Сначала заверши все задания урока.','bad');return;}if(sending||finished)return;sending=true;$('finish').disabled=true;const minutes=Math.max(1,Math.round((Date.now()-startedAt)/60000));const data={sheet:SHEET_NAME,sn:student.sn,nm:student.nm,cl:student.cl,hw:reviewScore,hwT:REVIEW.length,cur:testScore,curT:12,r1:$('r1').value.trim(),r2:$('r2').value.trim(),r3:$('r3').value.trim(),r4:$('r4').value.trim(),dt:new Date().toLocaleString('ru-RU'),interactives:activityScores.map((v,i)=>(i+1)+':'+(v?'верно':'ошибка')).join('; '),switches:switches,minutes:minutes,status:'Завершён'};showMsg('finishMsg','Отправляем результаты…','info');
-fetch(API_URL,{
-  method:'POST',
-  headers:{'Content-Type':'text/plain;charset=utf-8'},
-  body:JSON.stringify(data)
-})
-.then(r=>r.text())
-.then(text=>{
-  var res;
 
-  try {
-    res = JSON.parse(text);
-  } catch(e) {
-    throw new Error('Сервер вернул некорректный ответ: ' + text);
+// Проверочная работа открывается после пяти заданий в конце нового материала.
+const nextTest=document.createElement('button');
+nextTest.className='btn';
+nextTest.textContent='Перейти к проверочной работе';
+nextTest.onclick=()=>{
+  if(activityScores.some(x=>x===null)){
+    showMsg('orderMsg','Сначала выполни все пять интерактивных заданий.','bad');
+    return;
   }
+  testRendered=renderQuestions('testQs',TEST,'ts');
+  $('stage').textContent='✅ Проверочная работа';
+  reveal('test');
+};
+$('material').appendChild(nextTest);
 
-  if (!res.ok) {
-    throw new Error(res.error || 'Сервер не подтвердил запись результатов');
+$('submitTest').onclick=()=>{
+  const r=scoreQuestions(testRendered,'ts');
+  if(!r.complete){
+    showMsg('testMsg','Ответь на все вопросы и заполни задание на соответствие.','bad');
+    return;
   }
+  testScore=r.score;
+  showMsg('testMsg','Результат: '+r.score+' из '+r.total+'. Переходи к рефлексии.');
+  $('stage').textContent='💭 Рефлексия';
+  reveal('reflection');
+};
 
-  finished=true;
-  showMsg('finishMsg','Урок завершён! Результаты отправлены. Спасибо за работу.');
-  $('stage').textContent='🏁 Урок завершён';
-})
-.catch(err=>{
-  showMsg(
-    'finishMsg',
-    'Не удалось подтвердить отправку. Проверь интернет и попробуй ещё раз. ('+err.message+')',
-    'bad'
-  );
-  $('finish').disabled=false;
-  sending=false;
+document.addEventListener('visibilitychange',()=>{
+  if(startedAt&&!finished&&document.visibilityState==='hidden')switches++;
 });
-','bad');$('finish').disabled=false;sending=false;});};
-</script></body></html>
+
+$('finish').onclick=()=>{
+  if(testScore===null||reviewScore===null||activityScores.some(x=>x===null)){
+    showMsg('finishMsg','Сначала заверши все задания урока.','bad');
+    return;
+  }
+
+  if(sending||finished)return;
+
+  sending=true;
+  $('finish').disabled=true;
+
+  const minutes=Math.max(1,Math.round((Date.now()-startedAt)/60000));
+
+  const data={
+    sheet:SHEET_NAME,
+    sn:student.sn,
+    nm:student.nm,
+    cl:student.cl,
+    hw:reviewScore,
+    hwT:REVIEW.length,
+    cur:testScore,
+    curT:12,
+    r1:$('r1').value.trim(),
+    r2:$('r2').value.trim(),
+    r3:$('r3').value.trim(),
+    r4:$('r4').value.trim(),
+    dt:new Date().toLocaleString('ru-RU'),
+    interactives:activityScores.map((v,i)=>(i+1)+':'+(v?'верно':'ошибка')).join('; '),
+    switches:switches,
+    minutes:minutes,
+    status:'Завершён'
+  };
+
+  showMsg('finishMsg','Отправляем результаты…','info');
+
+  fetch(API_URL,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(data)
+  })
+  .then(r=>r.text())
+  .then(text=>{
+    var res;
+
+    try{
+      res=JSON.parse(text);
+    }catch(e){
+      throw new Error('Сервер вернул некорректный ответ: '+text);
+    }
+
+    if(!res.ok){
+      throw new Error(res.error||'Сервер не подтвердил запись результатов');
+    }
+
+    finished=true;
+    showMsg('finishMsg','Урок завершён! Результаты отправлены. Спасибо за работу.');
+    $('stage').textContent='🏁 Урок завершён';
+  })
+  .catch(err=>{
+    showMsg(
+      'finishMsg',
+      'Не удалось подтвердить отправку. Проверь интернет и попробуй ещё раз. ('+err.message+')',
+      'bad'
+    );
+    $('finish').disabled=false;
+    sending=false;
+  });
+};
+</script>
+</body>
+</html>

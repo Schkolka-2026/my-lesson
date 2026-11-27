@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    z-index: 10;
+  }
+
+  .teacher-info .school {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .teacher-info {
+      position: relative;
+      top: auto;
+      right: auto;
+      text-align: center;
+      margin: 10px;
+    }
+  }
+</style>
+    <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Мои уроки биологии</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
+    <div class="teacher-info">
+  <div class="school">МАОУ «Школа Экодолье»</div>
+  <div>Дружинина Екатерина Александровна</div>
+  <div>учитель биологии</div>
+</div>
     font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #e0f2f1 100%);
     color: #1e3a2e;

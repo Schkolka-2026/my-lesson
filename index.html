@@ -22,6 +22,20 @@ header {
     margin-bottom: 3rem;
     position: relative;
 }
+.teacher-info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    color: #4a6b4a;
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+.teacher-info strong {
+    display: block;
+    color: #1b5e20;
+    font-weight: 700;
+}
 header .leaf {
     font-size: 4rem;
     display: block;
@@ -130,7 +144,7 @@ header .divider {
     transform: translateY(-2px);
 }
 
-/* Заглушка для будущих уроков */
+/* Заглушки для будущих уроков */
 .lesson-card.coming-soon {
     background: #fafdf8;
     border-style: dashed;
@@ -156,12 +170,18 @@ footer {
     color: #6b8a6b;
     font-size: 0.9rem;
 }
-footer .heart {
-    color: #66bb6a;
-}
+footer .heart { color: #66bb6a; }
 
 /* Адаптив */
 @media (max-width: 600px) {
+    header { display: flex; flex-direction: column; }
+    .teacher-info {
+        position: static;
+        order: -1;
+        text-align: right;
+        margin-bottom: 1rem;
+        font-size: 0.82rem;
+    }
     header h1 { font-size: 1.8rem; }
     header .leaf { font-size: 3rem; }
     .lessons-grid { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -173,6 +193,11 @@ footer .heart {
 <div class="container">
 
     <header>
+        <div class="teacher-info">
+            <strong>МАОУ "Школа Экодолье"</strong>
+            Дружинина Екатерина Александровна<br>
+            учитель биологии
+        </div>
         <span class="leaf">🌿</span>
         <h1>Мои уроки биологии</h1>
         <p>Интерактивные уроки для 6 класса. Выполняйте задания, проверяйте знания и изучайте природу вместе с нами.</p>
@@ -191,21 +216,46 @@ footer .heart {
         </article>
 
         <!-- Урок 10: Видоизменения корней -->
-      <article class="lesson-card">
-    <div class="lesson-icon">🌿</div>
-    <span class="lesson-number">УРОК 10</span>
-    <h2>Видоизменения корней</h2>
-    <p>Узнайте, как корни приспосабливаются к условиям среды: корнеплоды, корневые клубни, корни-прицепки и дыхательные корни.</p>
-    <a href="vidoizm korney.html" class="btn">Начать урок →</a>
-</article>
+        <article class="lesson-card">
+            <div class="lesson-icon">🌿</div>
+            <span class="lesson-number">УРОК 10</span>
+            <h2>Видоизменения корней</h2>
+            <p>Узнайте, как корни приспосабливаются к условиям среды: корнеплоды, корневые клубни, корни-прицепки и дыхательные корни.</p>
+            <a href="vidoizm korney.html" class="btn">Начать урок →</a>
+        </article>
 
-          <!-- Урок 11: Побег. Развитие побега из почки -->
+        <!-- Урок 11: Побег. Развитие побега из почки -->
         <article class="lesson-card">
             <div class="lesson-icon">🍃</div>
             <span class="lesson-number">УРОК 11</span>
             <h2>Побег. Развитие побега из почки</h2>
             <p>Узнайте секреты побега: из чего он состоит и как развивается.</p>
             <a href="pobeg.html" class="btn">Начать урок →</a>
+        </article>
+
+        <!-- Будущие уроки -->
+        <article class="lesson-card coming-soon">
+            <div class="lesson-icon">🌼</div>
+            <span class="lesson-number">УРОК 12</span>
+            <h2>Новый урок скоро появится</h2>
+            <p>Материалы урока готовятся.</p>
+            <span class="btn">Скоро</span>
+        </article>
+
+        <article class="lesson-card coming-soon">
+            <div class="lesson-icon">🌳</div>
+            <span class="lesson-number">УРОК 13</span>
+            <h2>Новый урок скоро появится</h2>
+            <p>Материалы урока готовятся.</p>
+            <span class="btn">Скоро</span>
+        </article>
+
+        <article class="lesson-card coming-soon">
+            <div class="lesson-icon">🌸</div>
+            <span class="lesson-number">УРОК 14</span>
+            <h2>Новый урок скоро появится</h2>
+            <p>Материалы урока готовятся.</p>
+            <span class="btn">Скоро</span>
         </article>
 
     </main>

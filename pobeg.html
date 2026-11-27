@@ -385,23 +385,40 @@ let reviewRendered=[],testRendered=[];
 
 function scoreQuestions(arr,prefix){
   let score=0,complete=true;
+
   arr.forEach((q,i)=>{
     if(q.match){
+      let allCorrect=true;
+
       q.items.forEach((pair,j)=>{
         const v=$(prefix+'_'+j).value;
-        if(!v)complete=false;
-        else if(v===pair[1])score++;
+
+        if(!v){
+          complete=false;
+          allCorrect=false;
+        }else if(v!==pair[1]){
+          allCorrect=false;
+        }
       });
+
+      // Задание на соответствие — 1 балл за полностью верный ответ.
+      if(allCorrect)score++;
+
     }else{
       const chosen=document.querySelector('input[name="'+prefix+'_'+i+'"]:checked');
-      if(!chosen)complete=false;
-      else if(Number(chosen.value)===q.c)score++;
+
+      if(!chosen){
+        complete=false;
+      }else if(Number(chosen.value)===q.c){
+        score++;
+      }
     }
   });
+
   return {
-    score,
-    total:arr.reduce((n,q)=>n+(q.match?q.items.length:1),0),
-    complete
+    score:score,
+    total:arr.length,
+    complete:complete
   };
 }
 
@@ -630,7 +647,7 @@ $('finish').onclick=()=>{
     hw:reviewScore,
     hwT:REVIEW.length,
     cur:testScore,
-    curT:12,
+    curT:TEST.length,
     r1:$('r1').value.trim(),
     r2:$('r2').value.trim(),
     r3:$('r3').value.trim(),
@@ -663,8 +680,12 @@ $('finish').onclick=()=>{
       throw new Error(res.error||'Сервер не подтвердил запись результатов');
     }
 
+    if(res.sheet!==SHEET_NAME){
+      throw new Error('Ожидался лист «'+SHEET_NAME+'», сервер указал: '+res.sheet);
+    }
+
     finished=true;
-    showMsg('finishMsg','Урок завершён! Результаты отправлены. Спасибо за работу.');
+    showMsg('finishMsg','Урок завершён! Результаты отправлены в лист «Побег». Спасибо за работу.');
     $('stage').textContent='🏁 Урок завершён';
   })
   .catch(err=>{
